@@ -1,7 +1,7 @@
 <?php include "z_db.php";?>
 
   <!--====== Footer Area Start ======-->
-  <footer class="main-footer bgs-cover overlay rel z-1 pb-25" style="background-image: url(assets/images/backgrounds/footer.jpg);">
+  <footer class="main-footer bgs-cover overlay rel z-1 pb-25" style="background-image: url(assets/images/original/hero-head.jpeg);">
             <div class="container">
                 <div class="footer-top pt-100 pb-30">
                     <div class="row justify-content-between">
