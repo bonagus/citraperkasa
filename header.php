@@ -122,7 +122,7 @@
                                     <ul class="navigation clearfix">
                                         <li><a href="home">Home</a></li>  
                                         <li><a href="destination">Destination</a></li>   
-                                        <li><a href="service">Service</a></li>                               </li>
+                                        <li><a href="services">Service</a></li>                               </li>
                                         <li class="dropdown"><a href="#">Blog</a>
                                             <ul>
                                                 <li><a href="blog.html">blog List</a></li>

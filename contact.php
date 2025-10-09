@@ -1,171 +1,166 @@
 <?php include "header.php";?>
-        <!-- ***** Breadcrumb Area Start ***** -->
-        <section class="section breadcrumb-area overlay-dark d-flex align-items-center">
+
+       
+        
+        <!-- Page Banner Start -->
+        <section class="page-banner-area pt-50 pb-35 rel z-1 bgs-cover" style="background-image: url(assets/images/banner/banner.jpg);">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <!-- Breamcrumb Content -->
-                        <div class="breadcrumb-content text-center">
-                            <h2 class="text-white text-uppercase mb-3">Contact Us</h2>
-                            <ol class="breadcrumb d-flex justify-content-center">
-                                <li class="breadcrumb-item"><a class="text-uppercase text-white" href="index.html">Home</a></li>
-                                <li class="breadcrumb-item"><a class="text-uppercase text-white" href="#">Pages</a></li>
-                                <li class="breadcrumb-item text-white active">Contact</li>
-                            </ol>
+                <div class="banner-inner text-white">
+                    <h2 class="page-title mb-10" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">Contact Us</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center mb-20" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active">Contact Us</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- Page Banner End -->
+        
+        
+        <!-- Contact Info Area start -->
+        <section class="contact-info-area pt-100 rel z-1">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4">
+                        <div class="contact-info-content mb-30 rmb-55" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="section-title mb-30">
+                                <h2>Get in Touch</h2>
+                            </div>
+                            <p>Silahkan Hubungi kami melalui form yang kami sediakan atau hubungi nomor whatsapp di bawah untuk informasi Lebih, Kepuasan pelanggan kebanggaan kami.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="contact-info-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50" data-aos-delay="50">
+                                    <div class="icon"><i class="fas fa-envelope"></i></div>
+                                    <div class="content">
+                                        <div class="text"><i class="far fa-envelope"></i> <a href="mailto:admin@citraperkasatour.com">admin@citraperkasatour.com</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="contact-info-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50" data-aos-delay="100">
+                                    <div class="icon"><i class="fas fa-phone"></i></div>
+                                    <div class="content">
+                                        <div class="text"><i class="far fa-phone"></i> <a href="https://wa.me/6285747138766">(+62) 857-4713-8766</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="contact-info-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50" data-aos-delay="50">
+                                    <div class="icon"><i class="fas fa-clock"></i></div>
+                                    <div class="content">
+                                        <div class="text"><i class="fal fa-clock"></i> Mon - Fri, 08am - 05pm</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="contact-info-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50" data-aos-delay="100">
+                                    <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                                    <div class="content">
+                                        <div class="text"><i class="fal fa-map-marker-alt"></i> Perum. Griya Safira, Gemuruh, Kec. Bawang, Kab. Banjarnegara, Jawa Tengah (53471)</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- ***** Breadcrumb Area End ***** -->
-
-
-        <!--====== Contact Area Start ======-->
-        <section id="contact" class="contact-area ptb_100">
+        <!-- Contact Info Area end -->
+        
+        
+        <!-- Contact Form Area start -->
+        <section class="contact-form-area py-70 rel z-1">
             <div class="container">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-12 col-lg-5">
-                        <!-- Section Heading -->
-                        <div class="section-heading text-center mb-3">
-                            <h2><?php print $contact_title ?></h2>
-                            <p class="d-none d-sm-block mt-4"><?php print $contact_text ?></p>
-                        </div>
-                        <!-- Contact Us -->
-                        <div class="contact-us">
-                            <ul>
-                                <!-- Contact Info -->
-                                <li class="contact-info color-1 bg-hover active hover-bottom text-center p-5 m-3">
-                                    <span><i class="fas fa-mobile-alt fa-3x"></i></span>
-                                    <a class="d-block my-2" href="tel:<?php print $phone1 ?>">
-                                        <h3><?php print $phone1 ?></h3>
-                                    </a>
-
-                                </li>
-                                <!-- Contact Info -->
-                                <li class="contact-info color-3 bg-hover active hover-bottom text-center p-5 m-3">
-                                    <span><i class="fas fa-envelope-open-text fa-3x"></i></span>
-                                    <a class="d-none d-sm-block my-2" href="mailto:<?php print $email1 ?>">
-                                        <h3><?php print $email1 ?></h3>
-                                    </a>
-                                    <a class="d-block d-sm-none my-2" href="mailto:<?php print $email1 ?>">
-                                        <h3><?php print $email1 ?></h3>
-                                    </a>
-
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-6 pt-4 pt-lg-0">
-                        <!-- Contact Box -->
-                        <div class="contact-box text-center">
-                            <!-- Contact Form -->
-                            <?php
-           $status = "OK"; //initial status
-$msg="";
-           if(ISSET($_POST['save'])){
-$name = mysqli_real_escape_string($con,$_POST['name']);
-$email = mysqli_real_escape_string($con,$_POST['email']);
-$phone = mysqli_real_escape_string($con,$_POST['phone']);
-$message = mysqli_real_escape_string($con,$_POST['message']);
-
- if ( strlen($name) < 5 ){
-$msg=$msg."Name Must Be More Than 5 Char Length.<BR>";
-$status= "NOTOK";}
- if ( strlen($email) < 9 ){
-$msg=$msg."Email Must Be More Than 10 Char Length.<BR>";
-$status= "NOTOK";}
-if ( strlen($message) < 10 ){
-    $msg=$msg."Message Must Be More Than 10 Char Length.<BR>";
-    $status= "NOTOK";}
-
-if ( strlen($phone) < 8 ){
-  $msg=$msg."Phone Must Be More Than 8 Char Length.<BR>";
-  $status= "NOTOK";}
-
-  if($status=="OK")
-  {
-
-$recipient="awolu_faith@live.com";
-
-$formcontent="NAME:$name \n EMAIL: $email  \n PHONE: $phone  \n MESSAGE: $message";
-
-$subject = "New Enquiry from Vogue Website";
-$mailheader = "From: noreply@vogue.com \r\n";
-$result= mail($recipient, $subject, $formcontent);
-
-          if($result){
-                  $errormsg= "
-  <div class='alert alert-success alert-dismissible alert-outline fade show'>
-                   Enquiry Sent Successfully. We shall get back to you ASAP.
-                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                    </div>
-   "; //printing error if found in validation
-
-          }
-      }
-
-          elseif ($status!=="OK") {
-              $errormsg= "
-  <div class='alert alert-danger alert-dismissible alert-outline fade show'>
-                       ".$msg." <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> </div>"; //printing error if found in validation
-
-
-      }
-      else{
-              $errormsg= "
-        <div class='alert alert-danger alert-dismissible alert-outline fade show'>
-                   Some Technical Glitch Is There. Please Try Again Later Or Ask Admin For Help.
-                   <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                   </div>"; //printing error if found in validation
-
-
-          }
-             }
-             ?>
-<?php
-if($_SERVER['REQUEST_METHOD'] == 'POST')
-						{
-						print $errormsg;
-						}
-   ?>
-
-<form action="" method="post" enctype="multipart/form-data">
-                                <div class="row">
-                                    <div class="col-12">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <div class="comment-form bgc-lighter z-1 rel mb-30 rmb-55">
+                            <form id="contactForm" class="contactForm" name="contactForm" action="assets/php/form-process.php" method="post" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                                <div class="section-title">
+                                    <h2>Tinggalkan Pesan</h2>
+                                </div>
+                                <p></p>
+                                <div class="row mt-35">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="name" placeholder="Name" required="required">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" name="email" placeholder="Email" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="phone" placeholder="Phone" required="required">
+                                            <label for="name">Full Name</label>
+                                            <input type="text" id="name" name="name" class="form-control" placeholder="Rahman N. Malik" value="" required data-error="Please enter your Name">
+                                            <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <textarea class="form-control" name="message" placeholder="Message" required="required"></textarea>
+                                            <label for="phone_number">Phone Number</label>
+                                            <input type="text" id="phone_number" name="phone" class="form-control" placeholder="Phone" value="" required data-error="Please enter your Phone">
+                                            <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-bordered active btn-block mt-3" name="save"><span class="text-white pr-3"><i class="fas fa-paper-plane"></i></span>Send Message</button>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="email">Email Address</label>
+                                            <input type="email" id="email" name="email" class="form-control" placeholder="enter email" value="" required data-error="Please enter your Email">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="message">Your Message</label>
+                                            <textarea name="message" id="message" class="form-control" rows="5" placeholder="Message" required data-error="Please enter your Message"></textarea>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group mb-0">
+                                           <ul class="radio-filter mb-25">
+                                                <li>
+                                                    <input class="form-check-input" type="radio" name="terms-condition" id="terms-condition">
+                                                    <label for="terms-condition">Save my information.</label>
+                                                </li>
+                                            </ul>
+                                                <button type="submit" class="theme-btn style-two">
+                                                    <span data-hover="Submit now">Submit now</span>
+                                                    <i class="fal fa-arrow-right"></i>
+                                                </button>
+                                            <div id="msgSubmit" class="hidden"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
-                            <p class="form-message"></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="contact-images-part" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="row">
+                                <div class="col-12">
+                                    <img src="assets/images/contact/contact1.jpg" alt="Contact">
+                                </div>
+                                <div class="col-6">
+                                    <img src="assets/images/contact/contact2.jpg" alt="Contact">
+                                </div>
+                                <div class="col-6">
+                                    <img src="assets/images/contact/contact3.jpg" alt="Contact">
+                                </div>
+                            </div>
+                            <div class="circle-logo">
+                                <img src="assets/images/contact/icon.png" alt="Logo">
+                                <span class="title h2">Citra Perkasa</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!--====== Contact Area End ======-->
+        <!-- Contact Form Area end -->
+        
+        
+        <!-- Contact Map Start -->
+        <div class="contact-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4770.615610935854!2d109.6426584113352!3d-7.396084142583053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aabbe9d1f6f59%3A0x2cc7a5e72069f9f8!2sPerumahan%20Griya%20Safira!5e1!3m2!1sen!2sid!4v1753434806964!5m2!1sen!2sid" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <!-- Contact Map End -->
 
-
-        <!--====== Map Area Start ======-->
-        <section class="section map-area">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15831.675671634295!2d5.213205717780946!3d7.250068752504376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10478fe4790d8e8f%3A0x2cd76b14809e3d7a!2sAlagbaka%2C%20Akure!5e0!3m2!1sen!2sng!4v1658159211365!5m2!1sen!2sng" width="100" height="100" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-            </section>
-        <!--====== Map Area End ======-->
         <?php include "footer.php";?>

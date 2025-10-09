@@ -1,211 +1,86 @@
 
 <?php include "header.php"; ?>
-        <!-- ***** Breadcrumb Area Start ***** -->
-        <section class="section breadcrumb-area overlay-dark d-flex align-items-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <!-- Breamcrumb Content -->
-                        <div class="breadcrumb-content d-flex flex-column align-items-center text-center">
-                            <h2 class="text-white text-uppercase mb-3">About Us</h2>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a class="text-uppercase text-white" href="index.html">Home</a></li>
 
-                                <li class="breadcrumb-item text-white active">About Us</li>
-                            </ol>
-                        </div>
-                    </div>
+        <!-- Page Banner Start -->
+        <section class="page-banner-area pt-50 pb-35 rel z-1 bgs-cover" style="background-image: url(assets/images/banner/banner.jpg);">
+            <div class="container">
+                <div class="banner-inner text-white">
+                    <h2 class="page-title mb-10" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">About Us</h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center mb-20" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                            <li class="breadcrumb-item"><a href="home">Home</a></li>
+                            <li class="breadcrumb-item active">About Us</li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
         </section>
-        <!-- ***** Breadcrumb Area End ***** -->
-
-        <!-- ***** About Area Start ***** -->
-        <section class="section about-area ptb_100">
+        <!-- Page Banner End -->
+        
+        
+        <!-- About Area start -->
+        <section class="about-area-two py-100 rel z-1">
             <div class="container">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-12 col-lg-6">
-                        <!-- About Thumb -->
-                        <div class="about-thumb text-center">
-                            <img src="assets/img/about/about_thumb_1.jpg" alt="">
-                        </div>
+                <div class="row justify-content-between">
+                    <div class="col-xl-3" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
+                        <span class="subtitle mb-35">About Citra Perkasa</span>
                     </div>
-                    <div class="col-12 col-lg-6">
-                        <!-- About Content -->
-                        <div class="about-content section-heading text-center text-lg-left pl-md-4 mt-5 mt-lg-0 mb-0">
-                            <h2 class="mb-3"><?php print $about_title?></h2>
-                            <p><?php print $about_text;?></p>
-                            <!-- Counter Area -->
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- ***** About Area End ***** -->
-
-
-        <!-- ***** Our Goal Area End ***** -->
-
-        <!-- ***** Team Area Start ***** -->
-
-        <!-- ***** Team Area End ***** -->
-
-        <!--====== Contact Area Start ======-->
-        <section id="contact" class="contact-area ptb_100">
-            <div class="container">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-12 col-lg-5">
-                        <!-- Section Heading -->
-                        <div class="section-heading text-center mb-3">
-                            <h2><?php print $contact_title ?></h2>
-                            <p class="d-none d-sm-block mt-4"><?php print $contact_text ?></p>
-                        </div>
-                        <!-- Contact Us -->
-                        <div class="contact-us">
-                            <ul>
-                                <!-- Contact Info -->
-                                <li class="contact-info color-1 bg-hover active hover-bottom text-center p-5 m-3">
-                                    <span><i class="fas fa-mobile-alt fa-3x"></i></span>
-                                    <a class="d-block my-2" href="tel:<?php print $phone1 ?>">
-                                        <h3><?php print $phone1 ?></h3>
-                                    </a>
-
-                                </li>
-                                <!-- Contact Info -->
-                                <li class="contact-info color-3 bg-hover active hover-bottom text-center p-5 m-3">
-                                    <span><i class="fas fa-envelope-open-text fa-3x"></i></span>
-                                    <a class="d-none d-sm-block my-2" href="mailto:<?php print $email1 ?>">
-                                        <h3><?php print $email1 ?></h3>
-                                    </a>
-                                    <a class="d-block d-sm-none my-2" href="mailto:<?php print $email1 ?>">
-                                        <h3><?php print $email1 ?></h3>
-                                    </a>
-
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-6 pt-4 pt-lg-0">
-                        <!-- Contact Box -->
-                        <div class="contact-box text-center">
-                            <!-- Contact Form -->
-                            <?php
-           $status = "OK"; //initial status
-$msg="";
-           if(ISSET($_POST['save'])){
-$name = mysqli_real_escape_string($con,$_POST['name']);
-$email = mysqli_real_escape_string($con,$_POST['email']);
-$phone = mysqli_real_escape_string($con,$_POST['phone']);
-$message = mysqli_real_escape_string($con,$_POST['message']);
-
- if ( strlen($name) < 5 ){
-$msg=$msg."Name Must Be More Than 5 Char Length.<BR>";
-$status= "NOTOK";}
- if ( strlen($email) < 9 ){
-$msg=$msg."Email Must Be More Than 10 Char Length.<BR>";
-$status= "NOTOK";}
-if ( strlen($message) < 10 ){
-    $msg=$msg."Message Must Be More Than 10 Char Length.<BR>";
-    $status= "NOTOK";}
-
-if ( strlen($phone) < 8 ){
-  $msg=$msg."Phone Must Be More Than 8 Char Length.<BR>";
-  $status= "NOTOK";}
-
-  if($status=="OK")
-  {
-
-$recipient="awolu_faith@live.com";
-
-$formcontent="NAME:$name \n EMAIL: $email  \n PHONE: $phone  \n MESSAGE: $message";
-
-$subject = "New Enquiry from Vogue Website";
-$mailheader = "From: noreply@vogue.com \r\n";
-$result= mail($recipient, $subject, $formcontent);
-
-          if($result){
-                  $errormsg= "
-  <div class='alert alert-success alert-dismissible alert-outline fade show'>
-                   Enquiry Sent Successfully. We shall get back to you ASAP.
-                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                    </div>
-   "; //printing error if found in validation
-
-          }
-      }
-
-          elseif ($status!=="OK") {
-              $errormsg= "
-  <div class='alert alert-danger alert-dismissible alert-outline fade show'>
-                       ".$msg." <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> </div>"; //printing error if found in validation
-
-
-      }
-      else{
-              $errormsg= "
-        <div class='alert alert-danger alert-dismissible alert-outline fade show'>
-                   Some Technical Glitch Is There. Please Try Again Later Or Ask Admin For Help.
-                   <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                   </div>"; //printing error if found in validation
-
-
-          }
-             }
-             ?>
-<?php
-if($_SERVER['REQUEST_METHOD'] == 'POST')
-						{
-						print $errormsg;
-						}
-   ?>
-
-<form action="" method="post" enctype="multipart/form-data">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="name" placeholder="Name" required="required">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" name="email" placeholder="Email" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="phone" placeholder="Phone" required="required">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <textarea class="form-control" name="message" placeholder="Message" required="required"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-bordered active btn-block mt-3" name="save"><span class="text-white pr-3"><i class="fas fa-paper-plane"></i></span>Send Message</button>
+                    <div class="col-xl-9">
+                        <div class="about-page-content" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="row">
+                                <div class="col-lg-8 pe-lg-5 me-lg-5">
+                                    <div class="section-title mb-25">
+                                        <h2>Visi & Misi</h2>
                                     </div>
                                 </div>
-                            </form>
-                            <p class="form-message"></p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h4>Visi</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <p>Menjadi perusahaan Tour, Travel, dan Transportasi pilihan dengan layanan yang ramah, sopan, ceria danberkesan positif bagi klien.</p>
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>Misi</h4>
+                                </div>
+                                <div class="col-md-10">
+                                    <p>Membangun jaringan hubungan jangka panjang dengan klien kami, serta menyediakan pelayanan yang luarbiasa dibidang Pariwisata, MICE, dan Transportasi.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!--====== Contact Area End ======-->
+        <!-- About Area end -->
 
-        <!--====== Call To Action Area Start ======-->
-        <section class="section cta-area bg-overlay ptb_100">
+
+
+        <!-- About Us Area start -->
+        <section class="about-us-area pt-70 pb-100 rel z-1">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-lg-10">
-                        <!-- Section Heading -->
-                        <div class="section-heading text-center m-0">
-                            <h2 class="text-white"><?php print $enquiry_title; ?></h2>
-                            <p class="text-white d-none d-sm-block mt-4"><?php print $enquiry_text; ?></p>
-                            <a href="contact" class="btn btn-bordered-white mt-4">Contact Us</a>
+                <div class="row align-items-center">
+                    <div class="col-xl-5 col-lg-6">
+                        <div class="about-us-content rmb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="section-title mb-25">
+                                <h2><?php print $about_title?></h2>
+                            </div>
+                            <p><?php print $about_text;?>.</p>
+                            <a href="destination" class="theme-btn mt-10 style-two">
+                                <span data-hover="Explore Destinations">Explore Destinations</span>
+                                <i class="fal fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-lg-6" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
+                        <div class="about-us-page">
+                            <img src="assets/images/original/visimisi.png" alt="About">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!--====== Call To Action Area End ======-->
+        <!-- About Us Area end -->
+
 <?php include "footer.php"; ?>

@@ -73,7 +73,6 @@
                             <p>Di bawah ada Trip informasi paket lengkap yang sudah tersedia, apabila menginginkan trip yang belum tersedia silahkan hubungi kami</p>
                             <ul class="destinations-nav mt-30">
                                 <li data-filter="*" class="active">Show All</li>
-                                <li data-filter=".features">Features</li>
                                 <li data-filter=".promo">Promo</li>
                             </ul>
                         </div>

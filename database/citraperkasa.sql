@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Jul 2025 pada 03.56
--- Versi server: 10.1.37-MariaDB
--- Versi PHP: 5.6.40
+-- Generation Time: Jul 25, 2025 at 11:26 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,18 +24,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `username` varchar(150) NOT NULL,
   `password` varchar(150) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `updated_at`) VALUES
@@ -45,7 +44,7 @@ INSERT INTO `admin` (`id`, `username`, `password`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `blog`
+-- Table structure for table `blog`
 --
 
 CREATE TABLE `blog` (
@@ -54,11 +53,11 @@ CREATE TABLE `blog` (
   `blog_desc` varchar(300) NOT NULL,
   `blog_detail` varchar(2000) NOT NULL,
   `ufile` varchar(1000) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `blog`
+-- Dumping data for table `blog`
 --
 
 INSERT INTO `blog` (`id`, `blog_title`, `blog_desc`, `blog_detail`, `ufile`, `updated_at`) VALUES
@@ -68,7 +67,7 @@ INSERT INTO `blog` (`id`, `blog_title`, `blog_desc`, `blog_detail`, `ufile`, `up
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `booking`
+-- Table structure for table `booking`
 --
 
 CREATE TABLE `booking` (
@@ -82,24 +81,24 @@ CREATE TABLE `booking` (
   `participant` varchar(11) NOT NULL,
   `status` varchar(11) NOT NULL,
   `notes` text NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
   `cat_title` varchar(50) NOT NULL,
   `cat_desc` varchar(50) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `cat_title`, `cat_desc`, `updated_at`) VALUES
@@ -109,7 +108,7 @@ INSERT INTO `category` (`id`, `cat_title`, `cat_desc`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `component`
+-- Table structure for table `component`
 --
 
 CREATE TABLE `component` (
@@ -120,13 +119,13 @@ CREATE TABLE `component` (
   `comp_detail` text NOT NULL,
   `comp_price` varchar(25) NOT NULL,
   `ufile` text NOT NULL,
-  `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `update_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `customer`
+-- Table structure for table `customer`
 --
 
 CREATE TABLE `customer` (
@@ -134,13 +133,13 @@ CREATE TABLE `customer` (
   `cust_fullname` varchar(50) NOT NULL,
   `cust_phone` varchar(15) NOT NULL,
   `cust_address` text NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `destination`
+-- Table structure for table `destination`
 --
 
 CREATE TABLE `destination` (
@@ -149,31 +148,34 @@ CREATE TABLE `destination` (
   `dest_desc` varchar(1000) NOT NULL,
   `dest_detail` varchar(2000) NOT NULL,
   `ufile` varchar(1000) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `destination`
+-- Dumping data for table `destination`
 --
 
 INSERT INTO `destination` (`id`, `dest_title`, `dest_desc`, `dest_detail`, `ufile`, `updated_at`) VALUES
-(3, 'BALI', 'PAKET WISATA KE BALI 3 HARI 3 MALAM', '1. OBYEK WISATA LIBURAN\n- Tanah Lot\n- Pantai Pandawa\n- Pantai Melasti\n- Pantai Kuta\n- Pantai Lovina\n- Pulau Nusa Penida\n- Tari Kecak Uluwatu\n- Joger, Puja Mandala\n- Pirates Cruise Dinner\n- Pura Ulun Danu Beratan\n- Garuda Wisnu Kencana\n- Desa Adat Penglipuran\n- Desa Adat Tenganan\n- Pengringsingan\n- Krishna\n\n2. TRANSPORTASI YANG DIGUNAKAN\n- Big Bus Pariwisata Configuration Seat 2-2\n- Medium Bus Pariwisata Configuration Seat 2-2\n- Kapal Penyeberangan Pelabuhan Ketapang - Pelabuhan Gilimanuk\n\n3. HOTEL\n- Bintang 3 dengan kapasitas 1 kamar berisi 2-4 orang (menyesuaikan harga)\n\n4. KOMSUMSI\n- Snack dan air mineral di awal pemberangkatan\nMakan sebanyak 11 kali selama perjalanan wisata \n\n5. FASILITAS DAN PELAYANAN YANG DIDAPATKAN \n- Professional Tour Leader\n- Dokumentasi Foto dan Video\n- P3K Ringan Banner foto dan banner bus\n- Tiket masuk obyek wisata\n- Sudah termasuk biaya parkir, biaya tol, dan fee crew \n \n6. HARGA YANG DITAWARKAN\nHarga yang kami tawarkan untuk Paket Wisata Bali dimulai dari Rp. 1,450,000, dengan ketentuan sebagai berikut : \n\nharga bervariasi tergantung dari obyek yang dipilih\nuntuk Paket Bali maksimal memilih 5 obyek wisata (belum bermasuk tempat oleh-oleh)\nHarga juga ditentukan oleh jumlah orang yang berwisata', '926070de04f0-df57-11ec-85a8-bda8f2c6ca77-rimg-w720-h720-gmir.jpg', '2025-07-18 14:48:54');
+(3, 'BALI', 'PAKET WISATA KE BALI 3 HARI 3 MALAM', '1. OBYEK WISATA LIBURAN\n- Tanah Lot\n- Pantai Pandawa\n- Pantai Melasti\n- Pantai Kuta\n- Pantai Lovina\n- Pulau Nusa Penida\n- Tari Kecak Uluwatu\n- Joger, Puja Mandala\n- Pirates Cruise Dinner\n- Pura Ulun Danu Beratan\n- Garuda Wisnu Kencana\n- Desa Adat Penglipuran\n- Desa Adat Tenganan\n- Pengringsingan\n- Krishna\n\n2. TRANSPORTASI YANG DIGUNAKAN\n- Big Bus Pariwisata Configuration Seat 2-2\n- Medium Bus Pariwisata Configuration Seat 2-2\n- Kapal Penyeberangan Pelabuhan Ketapang - Pelabuhan Gilimanuk\n\n3. HOTEL\n- Bintang 3 dengan kapasitas 1 kamar berisi 2-4 orang (menyesuaikan harga)\n\n4. KOMSUMSI\n- Snack dan air mineral di awal pemberangkatan\nMakan sebanyak 11 kali selama perjalanan wisata \n\n5. FASILITAS DAN PELAYANAN YANG DIDAPATKAN \n- Professional Tour Leader\n- Dokumentasi Foto dan Video\n- P3K Ringan Banner foto dan banner bus\n- Tiket masuk obyek wisata\n- Sudah termasuk biaya parkir, biaya tol, dan fee crew \n \n6. HARGA YANG DITAWARKAN\nHarga yang kami tawarkan untuk Paket Wisata Bali dimulai dari Rp. 1,450,000, dengan ketentuan sebagai berikut : \n\nharga bervariasi tergantung dari obyek yang dipilih\nuntuk Paket Bali maksimal memilih 5 obyek wisata (belum bermasuk tempat oleh-oleh)\nHarga juga ditentukan oleh jumlah orang yang berwisata', 'bali.png', '2025-07-23 08:18:42'),
+(4, 'BROMO-MALANG', 'BROMO-MALANG 2 HARI 1 MALAM', '1. OBYEK WISATA LIBURAN \r\n\r\nSunrise Point Pasir Berbisik / Pusung\r\n\r\nGedhe \r\n\r\nLembah Watangan \r\n\r\nKawah Bromo Kebun Apel \r\n\r\nBatu Night Spectacular \r\n\r\nMuseum Tubuh \r\n\r\nJatim Park 1 \r\n\r\nJatim Park 2 \r\n\r\nJatim Park 3 \r\n\r\nSantera De Laponte \r\n\r\nMuseum Angkut \r\n\r\nMuseum Brawijaya \r\n\r\nTaman Selecta Eco Green Park \r\n\r\n2. TRANSPORTASI YANG DIGUNAKAN \r\n\r\nBig Bus Pariwisata Configuration Seat 2-2\r\nMedium Bus Pariwisata Configuration Seat 2-2\r\nJeep Tour Bromo \r\n3. HOTEL \r\n\r\nHotel Bintang 3 dengan kapasitas 1 kamar berisi 2-4 orang (menyesuaikan harga) \r\n4. KONSUMSI\r\n\r\nSnack dan air mineral di awal pemberangkatan\r\nMakan sebanyak 7 kali selama perjalanan wisata\r\n5. FASILITAS DAN PELAYANAN YANG DIDAPATKAN\r\n\r\nProfessional Tour Leader\r\nDokumentasi Foto dan Video\r\nP3K Ringan\r\nBanner foto dan banner bus\r\nTiket masuk obyek wisata\r\nSudah termasuk biaya parkir, biaya tol, dan fee crew\r\n6. HARGA YANG DITAWARKAN\r\nHarga yang kami tawarkan untuk Paket Bromo-Malang dimulai dari Rp. 1,300,000, dengan ketentuan sebagai berikut :\r\n\r\nharga bervariasi tergantung dari obyek yang dipilih\r\nuntuk Paket Bromo-Malang maksimal memilih 5 obyek wisata (belum bermasuk tempat oleh-oleh)\r\nHarga juga ditentukan oleh jumlah orang yang berwisata', 'bromo.png', '2025-07-23 08:18:49'),
+(5, 'BANDUNG', 'BANDUNG 3 DAYS TRANSIT', '1. OBYEK WISATA LIBURAN\r\n\r\nTangkuban Perahu\r\n\r\nOrchid Forest\r\n\r\nFloating Market\r\n\r\nFarm House Lembang\r\n\r\nThe Great Asia-Afrika\r\n\r\nMuseum Pendidikan\r\n\r\nIndonesia\r\n\r\nTrans Studio\r\n\r\nMuseum Geologi\r\n\r\nMuseum Sri Baduga\r\n\r\nMuseum Konferensi Asia\r\nAfrika\r\n\r\nMuseum Barli\r\n\r\nMuseum Perjuangan\r\n\r\nRakyat Jawa Barat\r\n\r\nSaung Angklung Udjo\r\n\r\n2. TRANSPORTASI YANG DIGUNAKAN\r\n\r\nBig Bus Pariwisata Configuration Seat 2-2\r\nMedium Bus Pariwisata Configuration Seat 2-2\r\n3. KONSUMSI\r\n\r\nSnack dan air mineral di awal pemberangkatan\r\nMakan sebanyak 3 kali selama perjalanan wisata\r\n4. FASILITAS DAN PELAYANAN YANG DIDAPATKAN\r\n\r\nProfessional Tour Leader\r\nDokumentasi Foto dan Video\r\nP3K Ringan\r\nBanner foto dan banner bus\r\nTiket masuk obyek wisata\r\nSudah termasuk biaya parkir, biaya Tol, dan fee crew', 'bandung.png', '2025-07-23 08:18:54'),
+(6, 'BROMO GILI KETAPANG', 'BROMO GILI KETAPANG 2 DAYS 1 NIGHT', '1. OBYEK WISATA LIBURAN \r\n\r\nSunrise Point\r\nPasir Berbisik / Pusung Gedhe\r\nLembah Watangan\r\nKawah Bromo\r\nSnorkeling\r\nWater Sport \r\n2. TRANSPORTASI YANG DIGUNAKAN \r\n\r\nBig Bus Pariwisata Configuration Seat 2-2\r\nMedium Bus Pariwisata Configuration Seat 2-2\r\nJeep Tour Bromo\r\nKapal Penyebrangan Pulau Gili Ketapang \r\n3. HOTEL \r\n\r\nHotel dengan kapasitas 1 kamar berisi 2-4 orang (menyesuaikan harga) \r\n4. KONSUMSI \r\n\r\nSnack dan air mineral di awal pemberangkatan\r\nMakan sebanyak 7 kali selama perjalanan wisata \r\n5. FASILITAS DAN PELAYANAN YANG DIDAPATKAN \r\n\r\nProfessional Tour Leader\r\nDokumentasi Foto dan Video\r\nP3K Ringan\r\nBanner foto dan banner bus\r\nTiket masuk obyek wisata\r\nSudah termasuk biaya parkir, biaya tol, dan fee crew \r\n6. HARGA YANG DITAWARKAN \r\n\r\nHarga yang kami tawarkan untuk Paket Bromo-Gili Ketapang dimulai dari Rp. 1,300,000, dengan ketentuan sebagai berikut : \r\n\r\nharga bervariasi tergantung dari obyek yang dipilih\r\nHarga juga ditentukan oleh jumlah orang yang berwisata', 'bromogiliket.png', '2025-07-25 08:04:58');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `logo`
+-- Table structure for table `logo`
 --
 
 CREATE TABLE `logo` (
   `id` int(11) NOT NULL,
   `xfile` varchar(1000) NOT NULL,
   `ufile` varchar(1000) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `logo`
+-- Dumping data for table `logo`
 --
 
 INSERT INTO `logo` (`id`, `xfile`, `ufile`, `updated_at`) VALUES
@@ -182,7 +184,7 @@ INSERT INTO `logo` (`id`, `xfile`, `ufile`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `section_title`
+-- Table structure for table `section_title`
 --
 
 CREATE TABLE `section_title` (
@@ -204,16 +206,16 @@ CREATE TABLE `section_title` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `section_title`
+-- Dumping data for table `section_title`
 --
 
 INSERT INTO `section_title` (`id`, `about_title`, `about_text`, `why_title`, `why_text`, `service_title`, `service_text`, `dest_title`, `dest_text`, `test_title`, `test_text`, `contact_title`, `contact_text`, `enquiry_title`, `enquiry_text`) VALUES
-(1, 'We help to grow your business.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.', 'Work smarter, not harder.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.', 'We provide the best digital services', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.', 'Our Recent Works', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.', 'Our clients says', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.', 'Let\'s connect!', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.', 'Looking for the best digital agency & marketing solution?', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.');
+(1, '#solusiwisataceria </br>\nTOUR & TRANSPORT', 'CV Citra Perkasa Selalu Jaya atau yang lebih dikenal dengan Citra Perkasa adalah Perusahaan yangbergerak dalam bidang Aktivitas Biro, Agen Perjalanan Wisata dan Sewa Armada. Kami memberikan layanan berkualitas prima pada bidang Pariwisata, Studi Tour, Kunjungan Dinas, Outbond, layanan Meetings, Incentives, Conventions, dan Exibitions (MICE), serta layanan Sewa Alat Transportasi.\n\nMelalui pengalaman yang cukup handal dalam bidang Tour, Travel, dan Transportasi, Citra Perkasa mendapatkan kepercayaan klien sebagai salah satu biro pariwisata yang memiliki harga yang ekonomis dengan pelayanan dan fasilitas yang fantastis. Seperti slogan kami yaitu “ Pelayanan yang ramah dan sopan yang merupakan bagian dari solusi wisata yang ceria”\n\ncitra perkasa', 'Work smarter, not harder.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.', 'We provide the best digital services', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.', 'Our Recent Works', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.', 'Our clients says', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.', 'Let\'s connect!', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.', 'Looking for the best digital agency & marketing solution?', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum obcaecati dignissimos quae quo ad iste ipsum officiis deleniti asperiores sit.');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `service`
+-- Table structure for table `service`
 --
 
 CREATE TABLE `service` (
@@ -222,13 +224,13 @@ CREATE TABLE `service` (
   `service_desc` varchar(1000) NOT NULL,
   `service_detail` varchar(2000) NOT NULL,
   `ufile` varchar(1000) NOT NULL,
-  `upadated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `upadated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `siteconfig`
+-- Table structure for table `siteconfig`
 --
 
 CREATE TABLE `siteconfig` (
@@ -240,11 +242,11 @@ CREATE TABLE `siteconfig` (
   `site_footer` varchar(1000) NOT NULL,
   `follow_text` varchar(1000) NOT NULL,
   `site_url` varchar(50) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `siteconfig`
+-- Dumping data for table `siteconfig`
 --
 
 INSERT INTO `siteconfig` (`id`, `site_keyword`, `site_desc`, `site_title`, `site_about`, `site_footer`, `follow_text`, `site_url`, `updated_at`) VALUES
@@ -253,7 +255,7 @@ INSERT INTO `siteconfig` (`id`, `site_keyword`, `site_desc`, `site_title`, `site
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sitecontact`
+-- Table structure for table `sitecontact`
 --
 
 CREATE TABLE `sitecontact` (
@@ -264,11 +266,11 @@ CREATE TABLE `sitecontact` (
   `email2` varchar(100) NOT NULL,
   `longitude` varchar(100) NOT NULL,
   `latitude` varchar(150) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `sitecontact`
+-- Dumping data for table `sitecontact`
 --
 
 INSERT INTO `sitecontact` (`id`, `phone1`, `phone2`, `email1`, `email2`, `longitude`, `latitude`, `updated_at`) VALUES
@@ -277,7 +279,7 @@ INSERT INTO `sitecontact` (`id`, `phone1`, `phone2`, `email1`, `email2`, `longit
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `slider`
+-- Table structure for table `slider`
 --
 
 CREATE TABLE `slider` (
@@ -285,11 +287,11 @@ CREATE TABLE `slider` (
   `slide_title` varchar(150) NOT NULL,
   `slide_text` varchar(500) NOT NULL,
   `ufile` varchar(1000) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `slider`
+-- Dumping data for table `slider`
 --
 
 INSERT INTO `slider` (`id`, `slide_title`, `slide_text`, `ufile`, `updated_at`) VALUES
@@ -298,7 +300,7 @@ INSERT INTO `slider` (`id`, `slide_title`, `slide_text`, `ufile`, `updated_at`) 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `social`
+-- Table structure for table `social`
 --
 
 CREATE TABLE `social` (
@@ -309,7 +311,7 @@ CREATE TABLE `social` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `social`
+-- Dumping data for table `social`
 --
 
 INSERT INTO `social` (`id`, `name`, `fa`, `social_link`) VALUES
@@ -320,18 +322,18 @@ INSERT INTO `social` (`id`, `name`, `fa`, `social_link`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `static`
+-- Table structure for table `static`
 --
 
 CREATE TABLE `static` (
   `id` int(11) NOT NULL,
   `stitle` varchar(150) NOT NULL,
   `stext` varchar(500) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `static`
+-- Dumping data for table `static`
 --
 
 INSERT INTO `static` (`id`, `stitle`, `stext`, `updated_at`) VALUES
@@ -340,7 +342,7 @@ INSERT INTO `static` (`id`, `stitle`, `stext`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `testimony`
+-- Table structure for table `testimony`
 --
 
 CREATE TABLE `testimony` (
@@ -349,11 +351,11 @@ CREATE TABLE `testimony` (
   `name` varchar(150) NOT NULL,
   `position` varchar(100) NOT NULL,
   `ufile` varchar(1000) NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `testimony`
+-- Dumping data for table `testimony`
 --
 
 INSERT INTO `testimony` (`id`, `message`, `name`, `position`, `ufile`, `updated_at`) VALUES
@@ -363,7 +365,7 @@ INSERT INTO `testimony` (`id`, `message`, `name`, `position`, `ufile`, `updated_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tourism`
+-- Table structure for table `tourism`
 --
 
 CREATE TABLE `tourism` (
@@ -374,24 +376,24 @@ CREATE TABLE `tourism` (
   `tour_detail` text NOT NULL,
   `tour-price` varchar(25) NOT NULL,
   `ufile` text NOT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `why_us`
+-- Table structure for table `why_us`
 --
 
 CREATE TABLE `why_us` (
   `id` int(11) NOT NULL,
   `title` varchar(200) NOT NULL,
   `detail` varchar(500) NOT NULL,
-  `updated_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `updated_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `why_us`
+-- Dumping data for table `why_us`
 --
 
 INSERT INTO `why_us` (`id`, `title`, `detail`, `updated_on`) VALUES
@@ -409,191 +411,191 @@ INSERT INTO `why_us` (`id`, `title`, `detail`, `updated_on`) VALUES
 --
 
 --
--- Indeks untuk tabel `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `blog`
+-- Indexes for table `blog`
 --
 ALTER TABLE `blog`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `booking`
+-- Indexes for table `booking`
 --
 ALTER TABLE `booking`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `component`
+-- Indexes for table `component`
 --
 ALTER TABLE `component`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `destination`
+-- Indexes for table `destination`
 --
 ALTER TABLE `destination`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `logo`
+-- Indexes for table `logo`
 --
 ALTER TABLE `logo`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `section_title`
+-- Indexes for table `section_title`
 --
 ALTER TABLE `section_title`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `service`
+-- Indexes for table `service`
 --
 ALTER TABLE `service`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `siteconfig`
+-- Indexes for table `siteconfig`
 --
 ALTER TABLE `siteconfig`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `sitecontact`
+-- Indexes for table `sitecontact`
 --
 ALTER TABLE `sitecontact`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `slider`
+-- Indexes for table `slider`
 --
 ALTER TABLE `slider`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `social`
+-- Indexes for table `social`
 --
 ALTER TABLE `social`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `static`
+-- Indexes for table `static`
 --
 ALTER TABLE `static`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `testimony`
+-- Indexes for table `testimony`
 --
 ALTER TABLE `testimony`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `why_us`
+-- Indexes for table `why_us`
 --
 ALTER TABLE `why_us`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `blog`
+-- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `booking`
+-- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `component`
+-- AUTO_INCREMENT for table `component`
 --
 ALTER TABLE `component`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `destination`
+-- AUTO_INCREMENT for table `destination`
 --
 ALTER TABLE `destination`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `logo`
+-- AUTO_INCREMENT for table `logo`
 --
 ALTER TABLE `logo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `section_title`
+-- AUTO_INCREMENT for table `section_title`
 --
 ALTER TABLE `section_title`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `service`
+-- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `sitecontact`
+-- AUTO_INCREMENT for table `sitecontact`
 --
 ALTER TABLE `sitecontact`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `slider`
+-- AUTO_INCREMENT for table `slider`
 --
 ALTER TABLE `slider`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `social`
+-- AUTO_INCREMENT for table `social`
 --
 ALTER TABLE `social`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `static`
+-- AUTO_INCREMENT for table `static`
 --
 ALTER TABLE `static`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `testimony`
+-- AUTO_INCREMENT for table `testimony`
 --
 ALTER TABLE `testimony`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `why_us`
+-- AUTO_INCREMENT for table `why_us`
 --
 ALTER TABLE `why_us`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
