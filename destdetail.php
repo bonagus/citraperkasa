@@ -1,29 +1,6 @@
 <?php
-include "header.php";
-$todo= mysqli_real_escape_string($con,$_GET["id"]);
-?>
-        <!-- ***** Breadcrumb Area Start ***** -->
-        <section class="section breadcrumb-area overlay-dark d-flex align-items-center">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <!-- Breamcrumb Content -->
-                        <div class="breadcrumb-content d-flex flex-column align-items-center text-center">
-                            <h2 class="text-white text-uppercase mb-3">destfolio Details</h2>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a class="text-uppercase text-white" href="index.html">Home</a></li>
-
-                                <li class="breadcrumb-item text-white active">destfolio</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- ***** Breadcrumb Area End ***** -->
-
-
-        <?php
+    include "header.php";
+    $todo= mysqli_real_escape_string($con,$_GET["id"]);
     $rt=mysqli_query($con,"SELECT * FROM destination where id='$todo'");
     $tr = mysqli_fetch_array($rt);
     $dest_title = "$tr[dest_title]";
@@ -31,193 +8,276 @@ $todo= mysqli_real_escape_string($con,$_GET["id"]);
     $ufile = "$tr[ufile]";
 ?>
 
-
-        <!-- ***** About Area Start ***** -->
-        <section class="section about-area ptb_100">
+        <!-- Page Banner Start -->
+        <section class="page-banner-area pt-50 pb-35 rel z-1 bgs-cover" style="background-image: url(dashboard/uploads/destination/<?php print $ufile;?>);">
             <div class="container">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-12 col-lg-6">
-                        <!-- About Thumb -->
-                        <div class="about-thumb text-center">
-                            <img src="dashboard/uploads/destination/<?php print $ufile;?>" alt="img">
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-6">
-                        <!-- About Content -->
-                        <div class="about-content section-heading text-center text-lg-left pl-md-4 mt-5 mt-lg-0 mb-0">
-                            <h2 class="mb-3"><?php print $dest_title?></h2>
-                            <p><?php print $dest_detail;?></p>
-                            <!-- Counter Area -->
-
-                        </div>
-                    </div>
+                <div class="banner-inner text-white">
+                    <h2 class="page-title mb-10" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50"><?php print $dest_title?></h2>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center mb-20" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active"><?php print $dest_title?></li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
         </section>
-        <!-- ***** About Area End ***** -->
+        <!-- Page Banner End -->
 
-
-        <!-- ***** Our Goal Area End ***** -->
-
-        <!-- ***** Team Area Start ***** -->
-
-        <!-- ***** Team Area End ***** -->
-
-        <!--====== Contact Area Start ======-->
-        <section id="contact" class="contact-area ptb_100">
+        <!-- Tour Details Area start -->
+        <section class="tour-details-page pb-100">
             <div class="container">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-12 col-lg-5">
-                        <!-- Section Heading -->
-                        <div class="section-heading text-center mb-3">
-                            <h2><?php print $contact_title ?></h2>
-                            <p class="d-none d-sm-block mt-4"><?php print $contact_text ?></p>
+                <hr class="mt-50 mb-70">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="tour-details-content">
+                            <h3>Explore <?php print $dest_title?></h3>
+                            <p><?php print $dest_detail;?></p>
                         </div>
-                        <!-- Contact Us -->
-                        <div class="contact-us">
-                            <ul>
-                                <!-- Contact Info -->
-                                <li class="contact-info color-1 bg-hover active hover-bottom text-center p-5 m-3">
-                                    <span><i class="fas fa-mobile-alt fa-3x"></i></span>
-                                    <a class="d-block my-2" href="tel:<?php print $phone1 ?>">
-                                        <h3><?php print $phone1 ?></h3>
-                                    </a>
-
-                                </li>
-                                <!-- Contact Info -->
-                                <li class="contact-info color-3 bg-hover active hover-bottom text-center p-5 m-3">
-                                    <span><i class="fas fa-envelope-open-text fa-3x"></i></span>
-                                    <a class="d-none d-sm-block my-2" href="mailto:<?php print $email1 ?>">
-                                        <h3><?php print $email1 ?></h3>
-                                    </a>
-                                    <a class="d-block d-sm-none my-2" href="mailto:<?php print $email1 ?>">
-                                        <h3><?php print $email1 ?></h3>
-                                    </a>
-
-                                </li>
-                            </ul>
+                        
+                        <h3>Activities</h3>
+                        <div class="tour-activities mt-30 mb-45">
+                            <div class="tour-activity-item">
+                                <i class="flaticon-hiking"></i>
+                                <b>Hiking</b>
+                            </div>
+                            <div class="tour-activity-item">
+                                <i class="flaticon-fishing"></i>
+                                <b>Fishing</b>
+                            </div>
+                            <div class="tour-activity-item">
+                                <i class="flaticon-man"></i>
+                                <b>Kayak shooting</b>
+                            </div>
+                            <div class="tour-activity-item">
+                                <i class="flaticon-kayak-1"></i>
+                                <b>Kayak</b>
+                            </div>
+                            <div class="tour-activity-item">
+                                <i class="flaticon-bonfire"></i>
+                                <b>Campfire</b>
+                            </div>
+                            <div class="tour-activity-item">
+                                <i class="flaticon-flashlight"></i>
+                                <b>Night Exploring</b>
+                            </div>
+                            <div class="tour-activity-item">
+                                <i class="flaticon-cycling"></i>
+                                <b>Biking</b>
+                            </div>
+                            <div class="tour-activity-item">
+                                <i class="flaticon-meditation"></i>
+                                <b>Yoga</b>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-lg-6 pt-4 pt-lg-0">
-                        <!-- Contact Box -->
-                        <div class="contact-box text-center">
-                            <!-- Contact Form -->
-                            <?php
-           $status = "OK"; //initial status
-$msg="";
-           if(ISSET($_POST['save'])){
-$name = mysqli_real_escape_string($con,$_POST['name']);
-$email = mysqli_real_escape_string($con,$_POST['email']);
-$phone = mysqli_real_escape_string($con,$_POST['phone']);
-$message = mysqli_real_escape_string($con,$_POST['message']);
 
- if ( strlen($name) < 5 ){
-$msg=$msg."Name Must Be More Than 5 Char Length.<BR>";
-$status= "NOTOK";}
- if ( strlen($email) < 9 ){
-$msg=$msg."Email Must Be More Than 10 Char Length.<BR>";
-$status= "NOTOK";}
-if ( strlen($message) < 10 ){
-    $msg=$msg."Message Must Be More Than 10 Char Length.<BR>";
-    $status= "NOTOK";}
-
-if ( strlen($phone) < 8 ){
-  $msg=$msg."Phone Must Be More Than 8 Char Length.<BR>";
-  $status= "NOTOK";}
-
-  if($status=="OK")
-  {
-
-$recipient="awolu_faith@live.com";
-
-$formcontent="NAME:$name \n EMAIL: $email  \n PHONE: $phone  \n MESSAGE: $message";
-
-$subject = "New Enquiry from Vogue Website";
-$mailheader = "From: noreply@vogue.com \r\n";
-$result= mail($recipient, $subject, $formcontent);
-
-          if($result){
-                  $errormsg= "
-  <div class='alert alert-success alert-dismissible alert-outline fade show'>
-                   Enquiry Sent Successfully. We shall get back to you ASAP.
-                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                    </div>
-   "; //printing error if found in validation
-
-          }
-      }
-
-          elseif ($status!=="OK") {
-              $errormsg= "
-  <div class='alert alert-danger alert-dismissible alert-outline fade show'>
-                       ".$msg." <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> </div>"; //printing error if found in validation
-
-
-      }
-      else{
-              $errormsg= "
-        <div class='alert alert-danger alert-dismissible alert-outline fade show'>
-                   Some Technical Glitch Is There. Please Try Again Later Or Ask Admin For Help.
-                   <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                   </div>"; //printing error if found in validation
-
-
-          }
-             }
-             ?>
-<?php
-if($_SERVER['REQUEST_METHOD'] == 'POST')
-						{
-						print $errormsg;
-						}
-   ?>
-
-<form action="" method="post" enctype="multipart/form-data">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="name" placeholder="Name" required="required">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" name="email" placeholder="Email" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="phone" placeholder="Phone" required="required">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <textarea class="form-control" name="message" placeholder="Message" required="required"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-bordered active btn-block mt-3" name="save"><span class="text-white pr-3"><i class="fas fa-paper-plane"></i></span>Send Message</button>
+                        <h3>Itinerary</h3>
+                        <div class="accordion-two mt-25 mb-60" id="faq-accordion-two">
+                            <div class="accordion-item">
+                                <h5 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwoOne">
+                                       Day 1 - Arrive at campground
+                                    </button>
+                                </h5>
+                                <div id="collapseTwoOne" class="accordion-collapse collapse" data-bs-parent="#faq-accordion-two">
+                                    <div class="accordion-body">
+                                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
                                     </div>
                                 </div>
-                            </form>
-                            <p class="form-message"></p>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header">
+                                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwoTwo">
+                                        Day 2 - Wake up early and embark on a day hike
+                                    </button>
+                                </h5>
+                                <div id="collapseTwoTwo" class="accordion-collapse collapse show" data-bs-parent="#faq-accordion-two">
+                                    <div class="accordion-body">
+                                        <p>The early start ensures you can fully immerse yourself in the tranquility of nature before the world fully awakens. As the morning light filters through the trees, you'll experience the crisp, fresh air and the peaceful sounds of the forest. The trail ahead offers both a physical challenge promise of breathtaking.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwoThree">
+                                        Day 3 - Join a guided ranger-led nature walk
+                                    </button>
+                                </h5>
+                                <div id="collapseTwoThree" class="accordion-collapse collapse" data-bs-parent="#faq-accordion-two">
+                                    <div class="accordion-body">
+                                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwoFour">
+                                        Day 4 - Take a break from hiking
+                                    </button>
+                                </h5>
+                                <div id="collapseTwoFour" class="accordion-collapse collapse" data-bs-parent="#faq-accordion-two">
+                                    <div class="accordion-body">
+                                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwoFive">
+                                        Day 5 - Pack a lunch and embark on a longer hike
+                                    </button>
+                                </h5>
+                                <div id="collapseTwoFive" class="accordion-collapse collapse" data-bs-parent="#faq-accordion-two">
+                                    <div class="accordion-body">
+                                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--====== Contact Area End ======-->
 
-        <!--====== Call To Action Area Start ======-->
-        <section class="section cta-area bg-overlay ptb_100">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-12 col-lg-10">
-                        <!-- Section Heading -->
-                        <div class="section-heading text-center m-0">
-                            <h2 class="text-white"><?php print $enquiry_title; ?></h2>
-                            <p class="text-white d-none d-sm-block mt-4"><?php print $enquiry_text; ?></p>
-                            <a href="contact" class="btn btn-bordered-white mt-4">Contact Us</a>
+                        <h3>Frequently Asked Questions</h3>
+                        <div class="accordion-one mt-25 mb-60" id="faq-accordion">
+                            <div class="accordion-item">
+                                <h5 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                       01_How do I book a tour or travel package?
+                                    </button>
+                                </h5>
+                                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
+                                    <div class="accordion-body">
+                                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header">
+                                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                        02_What is included in the travel package?
+                                    </button>
+                                </h5>
+                                <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#faq-accordion">
+                                    <div class="accordion-body">
+                                        <p>The early start ensures you can fully immerse yourself in the tranquility of nature before the world fully awakens. As the morning light filters through the trees, you'll experience the crisp, fresh air and the peaceful sounds of the forest. The trail ahead offers both a physical challenge promise of breathtaking.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                        03_What is your cancellation and refund policy?
+                                    </button>
+                                </h5>
+                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
+                                    <div class="accordion-body">
+                                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                        04_Can I customize my tour or travel package?
+                                    </button>
+                                </h5>
+                                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
+                                    <div class="accordion-body">
+                                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                                        05_What documents do I need to travel?
+                                    </button>
+                                </h5>
+                                <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
+                                    <div class="accordion-body">
+                                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>Maps</h3>
+                        <div class="tour-map mt-30 mb-50">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d96777.16150026117!2d-74.00840582560909!3d40.71171357405996!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1706508986625!5m2!1sen!2sbd" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        
+                    </div>
+                    <div class="col-lg-4 col-md-8 col-sm-10 rmt-75">
+                        <div class="blog-sidebar tour-sidebar">
+                           
+                            <div class="widget widget-booking" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                                <h5 class="widget-title">Tour Booking</h5>
+                                <form action="#">
+                                    <div class="date mb-25">
+                                        <b>From Date</b>
+                                        <input type="date">
+                                    </div>
+                                    <hr>
+                                    <div class="time py-5">
+                                        <b>Time :</b>
+                                        <ul class="radio-filter">
+                                            <li>
+                                                <input class="form-check-input" checked type="radio" name="time" id="time1">
+                                                <label for="time1">12:00</label>
+                                            </li>
+                                            <li>
+                                                <input class="form-check-input" type="radio" name="time" id="time2">
+                                                <label for="time2">08:00</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <hr class="mb-25">
+                                    <h6>Tickets:</h6>
+                                    <ul class="tickets clearfix">
+                                        <li>
+                                            Adult (18- years) <span class="price">$28.50</span>
+                                            <select name="18-" id="18-">
+                                                <option value="value1">01</option>
+                                                <option value="value1">02</option>
+                                                <option value="value1" selected>03</option>
+                                            </select>
+                                        </li>
+                                        <li>
+                                            Adult (18+ years) <span class="price">$50.40</span>
+                                            <select name="18+" id="18+">
+                                                <option value="value1">01</option>
+                                                <option value="value1">02</option>
+                                                <option value="value1">03</option>
+                                            </select>
+                                        </li>
+                                    </ul>
+                                    <hr class="mb-25">
+                                    <h6>Add Extra:</h6>
+                                    <ul class="radio-filter pt-5">
+                                        <li>
+                                            <input class="form-check-input" checked type="radio" name="AddExtra" id="add-extra1">
+                                            <label for="add-extra1">Add service per booking <span>$50</span></label>
+                                        </li>
+                                        <li>
+                                            <input class="form-check-input" type="radio" name="AddExtra" id="add-extra2">
+                                            <label for="add-extra2">Add service per personal <span>$24</span></label>
+                                        </li>
+                                    </ul>
+                                    <hr>
+                                    <h6>Total: <span class="price">$74</span></h6>
+                                    <button type="submit" class="theme-btn style-two w-100 mt-15 mb-5">
+                                        <span data-hover="Book Now">Book Now</span>
+                                        <i class="fal fa-arrow-right"></i>
+                                    </button>
+                                    <div class="text-center">
+                                        <a href="contact.html">Need some help?</a>
+                                    </div>
+                                </form>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!--====== Call To Action Area End ======-->
+        <!-- Tour Details Area end -->
+
 <?php include "footer.php"; ?>

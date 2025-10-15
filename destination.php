@@ -15,54 +15,84 @@
             </div>
         </section>
         <div class="container container-1400">
+            <form method="POST" action="booking_submit.php">
             <div class="search-filter-inner" data-aos="zoom-out-down" data-aos-duration="1500" data-aos-offset="50">
                 <div class="filter-item clearfix">
                     <div class="icon"><i class="fal fa-map-marker-alt"></i></div>
-                    <span class="title">Destinations</span>
-                    <select name="city" id="city">
-                        <option value="value1">City or Region</option>
-                        <option value="value2">City</option>
-                        <option value="value2">Region</option>
+                    <span class="title">Tujuan</span>
+                    <select id="destination" name="destination_id" onchange="loadLocations(this.value)">
+                        <option value="">--Pilih Daerah--</option>
+                        <?php
+                            $qform="SELECT * FROM  destination ORDER BY id DESC";
+                            $rform = mysqli_query($con,$qform);
+                            while($row = mysqli_fetch_array($rform)){
+                                echo "<option value='{$row['id']}'>{$row['dest_title']}</option>";
+                            }
+                        ?>
+                    </select>
+                    <select id="location" name="location_id">
+                        <option value="">--Pilih Daerah--</option>
                     </select>
                 </div>
+
                 <div class="filter-item clearfix">
                     <div class="icon"><i class="fal fa-flag"></i></div>
-                    <span class="title">All Activity</span>
-                    <select name="activity" id="activity">
-                        <option value="value1">Choose Activity</option>
-                        <option value="value2">Daily</option>
-                        <option value="value2">Monthly</option>
+                    <span class="title">Fasilitas <br> (Transportasi, Akomodasi, Konsumsi)</span>
+                    <select id="transport" name="transport_id">
+                        <option value="">--Pilih Kendaraan--</option>
+                        <?php
+                            $sform="SELECT * FROM facility WHERE category_id=1";
+                            $tform = mysqli_query($con,$sform);
+                            while ($rowt = mysqli_fetch_array($tform)) {
+                                echo "<option value='{$rowt['id']}'>{$rowt['name']}</option>";
+                            }
+                        ?>
+                    </select>
+                    <select id="hotel" name="hotel_id">
+                        <option value="">--Pilih Penginapan--</option>
+                        <?php
+                            $uform="SELECT * FROM facility WHERE category_id=2";
+                            $vform = mysqli_query($con,$uform);
+                            while ($rowp = mysqli_fetch_array($vform)) {
+                                echo "<option value='{$rowp['id']}'>{$rowp['name']}</option>";
+                            }
+                        ?>
+                    </select>
+                    <select id="meal" name="meal_id">
+                        <option value="">--Pilih Makanan--</option>
+                        <?php
+                            $wform="SELECT * FROM facility WHERE category_id=3";
+                            $xform = mysqli_query($con,$wform);
+                            while ($rowk = mysqli_fetch_array($xform)) {
+                                echo "<option value='{$rowk['id']}'>{$rowk['name']}</option>";
+                            }
+                        ?>
                     </select>
                 </div>
+
                 <div class="filter-item clearfix">
                     <div class="icon"><i class="fal fa-calendar-alt"></i></div>
-                    <span class="title">Departure Date</span>
-                    <select name="date" id="date">
-                        <option value="value1">Date from</option>
-                        <option value="value2">10</option>
-                        <option value="value2">20</option>
-                    </select>
+                    <span class="title">Tanggal</span>
+                    <input type="date" name="travel_date" required>
                 </div>
+
                 <div class="filter-item clearfix">
                     <div class="icon"><i class="fal fa-users"></i></div>
-                    <span class="title">Guests</span>
-                    <select name="cuests" id="cuests">
-                        <option value="value1">0</option>
-                        <option value="value2">1</option>
-                        <option value="value2">2</option>
-                    </select>
+                    <span class="title">Jumlah Peserta</span>
+                    <input type="number" name="pax" value="1" min="1">
                 </div>
+
                 <div class="search-button">
-                    <button class="theme-btn">
-                        <span data-hover="Search">Search</span>
-                        <i class="far fa-search"></i>
+                    <button class="theme-btn" type="submit">
+                        <span data-hover="Pesan">Pesan</span>
+                        <i class="far fa-paper-plane"></i>
                     </button>
                 </div>
             </div>
+            </form>
         </div>
         <!-- Page Banner End -->
-        
-        
+
         <!-- Popular Destinations Area start -->
         <section class="popular-destinations-area pt-100 pb-90 rel z-1">
             <div class="container">
@@ -82,18 +112,13 @@
                     <div class="row gap-10 destinations-active justify-content-center">
                         <?php
                             $q="SELECT * FROM  destination ORDER BY id DESC";
-
-
                             $r123 = mysqli_query($con,$q);
-
                             while($ro = mysqli_fetch_array($r123))
                             {
-
                                 $id="$ro[id]";
                                 $dest_title="$ro[dest_title]";
                                 $dest_desc="$ro[dest_desc]";
                                 $ufile="$ro[ufile]";
-
                                 print "
                                     <div class='col-md-6 item city features'>
                                         <div class='destination-item style-two' data-aos='flip-up' data-aos-duration='1500' data-aos-offset='50'>
@@ -118,5 +143,30 @@
         <!-- Popular Destinations Area end -->
 
 
-
+<script>
+// function loadLocations(destId) {
+//   fetch('ajax_location.php?id=' + destId)
+//     .then(res => res.text())
+//     .then(html => document.getElementById('location').innerHTML = html);
+//     // console.log("Tes, " + res + "!");
+// }
+function loadLocations(destId) {
+  fetch('ajax_location.php?id=' + destId)
+    .then(res => res.text())
+    .then(html => {
+      const selectEl = document.querySelector('#location');
+      if (!selectEl) {
+        console.error('Elemen #location tidak ditemukan');
+        return;
+      }
+      // Bersihkan event/plugin sebelum isi ulang
+      selectEl.innerHTML = html;
+      // Jika pakai plugin custom (Select2, NiceSelect, dsb.)
+      if (typeof $ !== 'undefined' && $.fn.niceSelect) {
+        $(selectEl).niceSelect('update');
+      }
+    })
+    .catch(err => console.error('Gagal memuat lokasi:', err));
+}
+</script>
 <?php include "footer.php"; ?>

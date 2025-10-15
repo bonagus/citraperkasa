@@ -13,8 +13,8 @@
     $contact_text="$rs[contact_text]";
     $dest_title="$rs[dest_title]";
     $dest_text="$rs[dest_text]";
-    // $service_title="$rs[service_title]";
-    // $service_text="$rs[service_text]";
+    $service_title="$rs[service_title]";
+    $service_text="$rs[service_text]";
     $why_title="$rs[why_title]";
     $why_text="$rs[why_text]";
     $about_title="$rs[about_title]";
@@ -140,8 +140,8 @@
                         <!-- Nav Search -->
                         <div class="nav-search">
                             <button class="far fa-search"></button>
-                            <form action="#" class="hide">
-                                <input type="text" placeholder="Search" class="searchbox" required="">
+                            <form action="search.php" method="get" class="hide">
+                                <input type="text" name="q" placeholder="Cari destinasi, lokasi, artikel..." class="searchbox">
                                 <button type="submit" class="searchbutton far fa-search"></button>
                             </form>
                         </div>
