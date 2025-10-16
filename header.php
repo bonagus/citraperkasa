@@ -122,11 +122,11 @@
                                     <ul class="navigation clearfix">
                                         <li><a href="home">Home</a></li>  
                                         <li><a href="destination">Destination</a></li>   
-                                        <li><a href="services">Service</a></li>                               </li>
-                                        <li class="dropdown"><a href="#">Blog</a>
+                                        <li><a href="gallery">Gallery</a></li>                               </li>
+                                        <li class="dropdown"><a href="#">News</a>
                                             <ul>
-                                                <li><a href="blog.html">blog List</a></li>
-                                                <li><a href="blog-details.html">blog details</a></li>
+                                                <li><a href="blog">Blog</a></li>
+                                                <li><a href="#">Client</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="about">About Us</a></li>
