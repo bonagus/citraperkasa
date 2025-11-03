@@ -31,44 +31,22 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="tour-details-content">
-                            <h3>Explore <?php print $dest_title?></h3>
+                            <h3>Fasilitas dan pelayanan yang didapatkan</h3>
                             <p><?php print $dest_detail;?></p>
                         </div>
                         
-                        <h3>Activities</h3>
+                        <h3>Obyek Wisata Liburan</h3>
                         <div class="tour-activities mt-30 mb-45">
-                            <div class="tour-activity-item">
-                                <i class="flaticon-hiking"></i>
-                                <b>Hiking</b>
-                            </div>
-                            <div class="tour-activity-item">
-                                <i class="flaticon-fishing"></i>
-                                <b>Fishing</b>
-                            </div>
-                            <div class="tour-activity-item">
-                                <i class="flaticon-man"></i>
-                                <b>Kayak shooting</b>
-                            </div>
-                            <div class="tour-activity-item">
-                                <i class="flaticon-kayak-1"></i>
-                                <b>Kayak</b>
-                            </div>
-                            <div class="tour-activity-item">
-                                <i class="flaticon-bonfire"></i>
-                                <b>Campfire</b>
-                            </div>
-                            <div class="tour-activity-item">
-                                <i class="flaticon-flashlight"></i>
-                                <b>Night Exploring</b>
-                            </div>
-                            <div class="tour-activity-item">
-                                <i class="flaticon-cycling"></i>
-                                <b>Biking</b>
-                            </div>
-                            <div class="tour-activity-item">
-                                <i class="flaticon-meditation"></i>
-                                <b>Yoga</b>
-                            </div>
+                            <?php
+                            $loc = "SELECT * FROM `location` WHERE destination_id = $todo";
+                            $qloc = mysqli_query($con, $loc);
+                            while ($lrow = mysqli_fetch_array($qloc)) {
+                                echo "<div class='tour-activity-item'>
+                                        <i class='flaticon-travel-agency'></i>
+                                        <b>{$lrow['name']}</b>
+                                    </div>";
+                            }
+                            ?>
                         </div>
 
                         <h3>Itinerary</h3>
