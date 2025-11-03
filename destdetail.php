@@ -30,10 +30,6 @@
                 <hr class="mt-50 mb-70">
                 <div class="row">
                     <div class="col-lg-8">
-                        <div class="tour-details-content">
-                            <h3>Fasilitas dan pelayanan yang didapatkan</h3>
-                            <p><?php print $dest_detail;?></p>
-                        </div>
                         
                         <h3>Obyek Wisata Liburan</h3>
                         <div class="tour-activities mt-30 mb-45">
@@ -49,137 +45,137 @@
                             ?>
                         </div>
 
-                        <h3>Itinerary</h3>
-                        <div class="accordion-two mt-25 mb-60" id="faq-accordion-two">
-                            <div class="accordion-item">
-                                <h5 class="accordion-header">
-                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwoOne">
-                                       Day 1 - Arrive at campground
-                                    </button>
-                                </h5>
-                                <div id="collapseTwoOne" class="accordion-collapse collapse" data-bs-parent="#faq-accordion-two">
-                                    <div class="accordion-body">
-                                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h5 class="accordion-header">
-                                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwoTwo">
-                                        Day 2 - Wake up early and embark on a day hike
-                                    </button>
-                                </h5>
-                                <div id="collapseTwoTwo" class="accordion-collapse collapse show" data-bs-parent="#faq-accordion-two">
-                                    <div class="accordion-body">
-                                        <p>The early start ensures you can fully immerse yourself in the tranquility of nature before the world fully awakens. As the morning light filters through the trees, you'll experience the crisp, fresh air and the peaceful sounds of the forest. The trail ahead offers both a physical challenge promise of breathtaking.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h5 class="accordion-header">
-                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwoThree">
-                                        Day 3 - Join a guided ranger-led nature walk
-                                    </button>
-                                </h5>
-                                <div id="collapseTwoThree" class="accordion-collapse collapse" data-bs-parent="#faq-accordion-two">
-                                    <div class="accordion-body">
-                                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h5 class="accordion-header">
-                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwoFour">
-                                        Day 4 - Take a break from hiking
-                                    </button>
-                                </h5>
-                                <div id="collapseTwoFour" class="accordion-collapse collapse" data-bs-parent="#faq-accordion-two">
-                                    <div class="accordion-body">
-                                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h5 class="accordion-header">
-                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwoFive">
-                                        Day 5 - Pack a lunch and embark on a longer hike
-                                    </button>
-                                </h5>
-                                <div id="collapseTwoFive" class="accordion-collapse collapse" data-bs-parent="#faq-accordion-two">
-                                    <div class="accordion-body">
-                                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h3>Frequently Asked Questions</h3>
+                        <h3>Transportasi yang digunakan</h3>
                         <div class="accordion-one mt-25 mb-60" id="faq-accordion">
-                            <div class="accordion-item">
-                                <h5 class="accordion-header">
-                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                                       01_How do I book a tour or travel package?
+                            <?php
+                            $sform = "SELECT * FROM facility WHERE category_id = 1";
+                            $tform = mysqli_query($con, $sform);
+                            while ($rowt = mysqli_fetch_assoc($tform)):
+                                // buat id unik
+                                $collapse_id = 'collapse-' . $rowt['id'];
+                            ?>
+                                <div class="accordion-item">
+                                <h5 class="accordion-header" id="heading-<?= $rowt['id'] ?>">
+                                    <button class="accordion-button collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#<?= $collapse_id ?>"
+                                            aria-expanded="false"
+                                            aria-controls="<?= $collapse_id ?>">
+                                    <?= htmlspecialchars($rowt['name']) ?>
                                     </button>
                                 </h5>
-                                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
+                                <div id="<?= $collapse_id ?>"
+                                    class="accordion-collapse collapse"
+                                    aria-labelledby="heading-<?= $rowt['id'] ?>"
+                                    data-bs-parent="#faq-accordion">
                                     <div class="accordion-body">
-                                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
+                                    <p><?= nl2br(htmlspecialchars($rowt['description'])) ?></p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion-item">
-                                <h5 class="accordion-header">
-                                    <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                                        02_What is included in the travel package?
-                                    </button>
-                                </h5>
-                                <div id="collapseTwo" class="accordion-collapse collapse show" data-bs-parent="#faq-accordion">
-                                    <div class="accordion-body">
-                                        <p>The early start ensures you can fully immerse yourself in the tranquility of nature before the world fully awakens. As the morning light filters through the trees, you'll experience the crisp, fresh air and the peaceful sounds of the forest. The trail ahead offers both a physical challenge promise of breathtaking.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h5 class="accordion-header">
-                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                                        03_What is your cancellation and refund policy?
-                                    </button>
-                                </h5>
-                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
-                                    <div class="accordion-body">
-                                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h5 class="accordion-header">
-                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour">
-                                        04_Can I customize my tour or travel package?
-                                    </button>
-                                </h5>
-                                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
-                                    <div class="accordion-body">
-                                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h5 class="accordion-header">
-                                    <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFive">
-                                        05_What documents do I need to travel?
-                                    </button>
-                                </h5>
-                                <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#faq-accordion">
-                                    <div class="accordion-body">
-                                        <p>To take a trivial example which undertakes laborious physical exercise except to obtain some advantage pleasure annoying consequences</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <?php endwhile; ?>
                         </div>
 
-                        <h3>Maps</h3>
-                        <div class="tour-map mt-30 mb-50">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d96777.16150026117!2d-74.00840582560909!3d40.71171357405996!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1706508986625!5m2!1sen!2sbd" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <h3>Hotel</h3>
+                        <div class="accordion-one mt-25 mb-60" id="faq-accordion">
+                            <?php
+                            $uform="SELECT * FROM facility WHERE category_id=2";
+                            $vform = mysqli_query($con,$uform);
+                            while ($rowp = mysqli_fetch_array($vform)): 
+                                // buat id unik
+                                $collapse_idp = 'collapse-' . $rowp['id'];
+                            ?>
+                                <div class="accordion-item">
+                                <h5 class="accordion-header" id="heading-<?= $rowp['id'] ?>">
+                                    <button class="accordion-button collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#<?= $collapse_idp ?>"
+                                            aria-expanded="false"
+                                            aria-controls="<?= $collapse_idp ?>">
+                                    <?= htmlspecialchars($rowp['name']) ?>
+                                    </button>
+                                </h5>
+                                <div id="<?= $collapse_idp ?>"
+                                    class="accordion-collapse collapse"
+                                    aria-labelledby="heading-<?= $rowp['id'] ?>"
+                                    data-bs-parent="#faq-accordion">
+                                    <div class="accordion-body">
+                                    <p><?= nl2br(htmlspecialchars($rowp['description'])) ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endwhile; ?>
+                        </div>
+
+                        <h3>Konsumsi</h3>
+                        <div class="accordion-one mt-25 mb-60" id="faq-accordion">
+                            <?php
+                            $wform="SELECT * FROM facility WHERE category_id=3";
+                            $xform = mysqli_query($con,$wform);
+                            while ($rowx = mysqli_fetch_array($xform)): 
+                                // buat id unik
+                                $collapse_idx = 'collapse-' . $rowx['id'];
+                            ?>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="heading-<?= $rowx['id'] ?>">
+                                    <button class="accordion-button collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#<?= $collapse_idx ?>"
+                                            aria-expanded="false"
+                                            aria-controls="<?= $collapse_idx ?>">
+                                    <?= htmlspecialchars($rowx['name']) ?>
+                                    </button>
+                                </h5>
+                                <div id="<?= $collapse_idx ?>"
+                                    class="accordion-collapse collapse"
+                                    aria-labelledby="heading-<?= $rowx['id'] ?>"
+                                    data-bs-parent="#faq-accordion">
+                                    <div class="accordion-body">
+                                    <p><?= nl2br(htmlspecialchars($rowx['description'])) ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endwhile; ?>
+                        </div>
+
+                        <h3>Fasilitas dan pelayanan yang didapatkan</h3>
+                        <div class="accordion-two mt-25 mb-60" id="faq-accordion-two">
+                            <?php
+                            $yform="SELECT * FROM facility WHERE category_id=4";
+                            $zform = mysqli_query($con,$yform);
+                            while ($rowz = mysqli_fetch_array($zform)): 
+                                // buat id unik
+                                $collapse_idz = 'collapse-' . $rowz['id'];
+                            ?>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="heading-<?= $rowz['id'] ?>">
+                                    <button class="accordion-button collapsed"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#<?= $collapse_idz ?>"
+                                            aria-expanded="false"
+                                            aria-controls="<?= $collapse_idz ?>">
+                                    <?= htmlspecialchars($rowz['name']) ?>
+                                    </button>
+                                </h5>
+                                <div id="<?= $collapse_idz ?>"
+                                    class="accordion-collapse collapse"
+                                    aria-labelledby="heading-<?= $rowz['id'] ?>"
+                                    data-bs-parent="#faq-accordion-two">
+                                    <div class="accordion-body">
+                                    <p><?= nl2br(htmlspecialchars($rowz['description'])) ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endwhile; ?>
+                        </div>
+                        
+                        <div class="tour-details-content">
+                            <h3>Harga yang ditawarkan</h3>
+                            <p><?php print $dest_detail;?></p>
                         </div>
                         
                     </div>
@@ -187,70 +183,83 @@
                         <div class="blog-sidebar tour-sidebar">
                            
                             <div class="widget widget-booking" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                                <h5 class="widget-title">Tour Booking</h5>
-                                <form action="#">
+                                <h5 class="widget-title">Booking Tour <?php print $dest_title;?></h5>
+                                <form method="post" action="booking_submit.php">
+                                    <input type="hidden" name="destination_id" value="<?= $todo ?>">
+                                    
+                                    <div class="mb-25">
+                                        <input type="text" name="name" required placeholder="Nama Pemesan">
+                                    </div>
+                                    <div class="mb-25">
+                                        <input type="text" name="phone" required placeholder="No. Handphone">
+                                    </div>
+                                    <div class="mb-25">
+                                        <input type="email" name="email" placeholder="Email (opsional)">
+                                    </div>
                                     <div class="date mb-25">
-                                        <b>From Date</b>
-                                        <input type="date">
+                                        <b>Tanggal</b>
+                                        <input type="date" name="travel_date" required>
                                     </div>
                                     <hr>
-                                    <div class="time py-5">
-                                        <b>Time :</b>
-                                        <ul class="radio-filter">
-                                            <li>
-                                                <input class="form-check-input" checked type="radio" name="time" id="time1">
-                                                <label for="time1">12:00</label>
-                                            </li>
-                                            <li>
-                                                <input class="form-check-input" type="radio" name="time" id="time2">
-                                                <label for="time2">08:00</label>
-                                            </li>
-                                        </ul>
+                                    <div class="mb-25">
+                                        <b>Lokasi</b><br>
+                                        <?php
+                                            $loc = mysqli_query($con, "SELECT * FROM `location` WHERE destination_id=$todo");
+                                            while($r = mysqli_fetch_assoc($loc)) {
+                                            echo "<label><input type='checkbox' name='locations[]' value='{$r['id']}'> {$r['name']}</label><br>";
+                                            }
+                                        ?>
+                                    </div>
+                                    <div class="mb-25">
+                                        <b>Kendaraan</b>
+                                        <select name="transport_id">
+                                            <?php
+                                            $f=mysqli_query($con,"SELECT * FROM facility WHERE category_id=1");
+                                            while($x=mysqli_fetch_assoc($f)){
+                                                echo "<option value='{$x['id']}'>{$x['name']}</option>";
+                                            } ?>
+                                        </select>
                                     </div>
                                     <hr class="mb-25">
-                                    <h6>Tickets:</h6>
-                                    <ul class="tickets clearfix">
-                                        <li>
-                                            Adult (18- years) <span class="price">$28.50</span>
-                                            <select name="18-" id="18-">
-                                                <option value="value1">01</option>
-                                                <option value="value1">02</option>
-                                                <option value="value1" selected>03</option>
-                                            </select>
-                                        </li>
-                                        <li>
-                                            Adult (18+ years) <span class="price">$50.40</span>
-                                            <select name="18+" id="18+">
-                                                <option value="value1">01</option>
-                                                <option value="value1">02</option>
-                                                <option value="value1">03</option>
-                                            </select>
-                                        </li>
-                                    </ul>
+                                    <div class="mb-25">
+                                        <b>Penginapan</b>
+                                        <select name="hotel_id">
+                                            <?php
+                                            $f=mysqli_query($con,"SELECT * FROM facility WHERE category_id=2");
+                                            while($x=mysqli_fetch_assoc($f)){
+                                                echo "<option value='{$x['id']}'>{$x['name']}</option>";
+                                            } ?>
+                                        </select>
+                                    </div>
                                     <hr class="mb-25">
-                                    <h6>Add Extra:</h6>
-                                    <ul class="radio-filter pt-5">
-                                        <li>
-                                            <input class="form-check-input" checked type="radio" name="AddExtra" id="add-extra1">
-                                            <label for="add-extra1">Add service per booking <span>$50</span></label>
-                                        </li>
-                                        <li>
-                                            <input class="form-check-input" type="radio" name="AddExtra" id="add-extra2">
-                                            <label for="add-extra2">Add service per personal <span>$24</span></label>
-                                        </li>
-                                    </ul>
-                                    <hr>
-                                    <h6>Total: <span class="price">$74</span></h6>
+                                    <div class="mb-25">
+                                        <b>Makanan</b>
+                                        <select name="meal_id">
+                                            <?php
+                                            $f=mysqli_query($con,"SELECT * FROM facility WHERE category_id=3");
+                                            while($x=mysqli_fetch_assoc($f)){
+                                                echo "<option value='{$x['id']}'>{$x['name']}</option>";
+                                            } ?>
+                                        </select>
+                                    </div>
+                                    <hr class="mb-25">
+                                    <div class="mb-25">
+                                        <b>Peserta</b>
+                                        <input type="number" name="pax" value="1" min="1">
+                                    </div>
+                                    <div class="mb-25">
+                                        <b>Note</b>
+                                        <textarea name="note"></textarea>
+                                    </div>
                                     <button type="submit" class="theme-btn style-two w-100 mt-15 mb-5">
-                                        <span data-hover="Book Now">Book Now</span>
+                                        <span data-hover="Book Now">Booking</span>
                                         <i class="fal fa-arrow-right"></i>
                                     </button>
                                     <div class="text-center">
-                                        <a href="contact.html">Need some help?</a>
+                                        <a href="contact">Butuh Bantuan?</a>
                                     </div>
                                 </form>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
