@@ -1,11 +1,13 @@
 <?php
     $con = new mysqli("localhost", "root", "", "citraperkasa");
+    //$con = new mysqli("localhost", "root", "", "citraperkasa");
     if ($con->connect_errno) {
         echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
 
     //Your Website URL Goes Here
     $url="http://localhost/citraperkasa";
+    //$url="http://localhost/citraperkasa";
 
 
     //Set Blog Activation Bonus Here (It must be only Number)

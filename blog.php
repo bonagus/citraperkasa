@@ -22,18 +22,20 @@
             <div class="container">
                 <div class="row">
                     <?php $q = mysqli_query($con, "SELECT * FROM blog ORDER BY id DESC");
-                        while ($row = mysqli_fetch_array($q)) { ?>
+                        while ($row = mysqli_fetch_array($q)) { 
+                                $datetime = $row["updated_at"];
+                                $formatted = date("d M Y, H:i", strtotime($datetime)); ?>
                         <div class="blog-item style-three" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                             <div class="image">
                                 <img src="assets/images/blog/blog-list1.jpg" alt="Blog List">
                             </div>
                             <div class="content">
-                                <h5><a href="#"><?= htmlspecialchars($row['blog_title']) ?></a></h5>
+                                <h5><a href="blogdetail.php?id=<?= $row['id']; ?>"><?= htmlspecialchars($row['blog_title']) ?></a></h5>
                                 <ul class="blog-meta">
-                                    <li><i class="far fa-calendar-alt"></i> <a href="#"><?= htmlspecialchars($row['updated_at']) ?></a></li>
+                                    <li><i class="far fa-calendar-alt"></i><?= htmlspecialchars($formatted) ?></li>
                                 </ul>
                                 <p><?= htmlspecialchars($row['blog_desc']) ?></p>
-                                <a href="#" class="theme-btn style-two style-three">
+                                <a href="blogdetail.php?id=<?= $row['id']; ?>" class="theme-btn style-two style-three">
                                     <span data-hover="Book Now">Read More</span>
                                     <i class="fal fa-arrow-right"></i>
                                 </a>

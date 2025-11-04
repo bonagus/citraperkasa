@@ -47,10 +47,13 @@
                 </div>
                 <div class="row">
                     <div class="gallery-slider-active">
-                        <div class="video-wrap" data-aos="zoom-in" data-aos-duration="1500" data-aos-offset="50">
-                            <img src="assets/images/video/video-bg.jpg" alt="Video">
-                            <a href="https://www.youtube.com/watch?v=9Y7ma241N8k" class="mfp-iframe video-play" tabindex="-1"><i class="fas fa-play"></i></a>
-                        </div>
+                        <?php $qv = mysqli_query($con, "SELECT * FROM gallery WHERE `type`='video' ORDER BY id DESC");
+                            while ($rowv = mysqli_fetch_array($qv)) { ?>
+                                <div class="video-wrap" data-aos="zoom-in" data-aos-duration="1500" data-aos-offset="50">
+                                    <img src="assets/images/video/video-bg.jpg" alt="Video">
+                                    <a href="<?= htmlspecialchars($rowv['ufile']) ?>" class="mfp-iframe video-play" tabindex="-1"><i class="fas fa-play"></i> <?= htmlspecialchars($rowv['title']) ?></a>
+                                </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
