@@ -17,7 +17,7 @@
                                         $like = "%".mysqli_real_escape_string($con, $keyword)."%";
 
                                         // Cari di destinasi
-                                        $sc1 = "SELECT id, dest_title, dest_desc,updated_at FROM destination WHERE dest_title LIKE '$like' OR dest_desc LIKE '$like'";
+                                        $sc1 = "SELECT id, dest_title, dest_desc, ufile, updated_at FROM destination WHERE dest_title LIKE '$like' OR dest_desc LIKE '$like'";
                                         $q1 = mysqli_query($con, $sc1);
                                         if (mysqli_num_rows($q1)) {
                                             echo "<div class='widget widget-news' data-aos='fade-up' data-aos-duration='1500' data-aos-offset='50'>
@@ -28,7 +28,7 @@
                                                 $formatted = date("d M Y, H:i", strtotime($datetime));
                                                 echo "<li>
                                                         <div class='image'>
-                                                            <img src='assets/images/widgets/news1.jpg' alt='News'>
+                                                            <img src='dashboard/uploads/destination/{$r['ufile']}' alt='Destination' style='max-width:100px; max-height:100px; object-fit:cover;'>
                                                         </div>
                                                         <div class='content'>
                                                             <h6><a href='destdetail.php?id={$r['id']}'>{$r['dest_title']}</a></h6>
@@ -49,7 +49,7 @@
                                             while ($r = mysqli_fetch_array($q2)) {
                                                 echo "<li>
                                                         <div class='image'>
-                                                            <img src='assets/images/widgets/news1.jpg' alt='News'>
+                                                            <img src='assets/images/widgets/news1.jpg' alt='Location'>
                                                         </div>
                                                         <div class='content'>
                                                             <h6><a href='destdetail.php?id={$r['destination_id']}'>{$r['name']}</a></h6>
@@ -60,7 +60,7 @@
                                         }
 
                                         // Cari di blog (jika ada)
-                                        $sc3 = "SELECT id, blog_title, blog_desc, blog_detail, updated_at FROM blog WHERE blog_title LIKE '$like' OR blog_desc LIKE '$like' OR blog_detail LIKE '$like'";
+                                        $sc3 = "SELECT id, blog_title, blog_desc, blog_detail, updated_at, ufile FROM blog WHERE blog_title LIKE '$like' OR blog_desc LIKE '$like' OR blog_detail LIKE '$like'";
                                         $q3 = mysqli_query($con, $sc3);
                                         if (mysqli_num_rows($q3)) {
                                             echo "<div class='widget widget-news' data-aos='fade-up' data-aos-duration='1500' data-aos-offset='50'>
@@ -71,7 +71,7 @@
                                                 $formattedb = date("d M Y, H:i", strtotime($datetimeb));
                                                 echo "<li>
                                                         <div class='image'>
-                                                            <img src='assets/images/widgets/news1.jpg' alt='News'>
+                                                            <img src='dashboard/uploads/blog/{$r['ufile']}' alt='News' style='max-width:100px; max-height:100px; object-fit:cover; border-radius:6px;'>
                                                         </div>
                                                         <div class='content'>
                                                             <h6><a href='blogdetail.php?id={$r['id']}'>{$r['blog_title']}</a></h6>

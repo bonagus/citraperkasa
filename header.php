@@ -126,7 +126,7 @@
                                         <li class="dropdown"><a href="#">News</a>
                                             <ul>
                                                 <li><a href="blog">Blog</a></li>
-                                                <li><a href="#">Client</a></li>
+                                                <li><a href="#">Client (soon)</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="about">About Us</a></li>

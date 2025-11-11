@@ -1,5 +1,5 @@
 <?php 
-include "header.php";
+    include "header.php";
     $togo= mysqli_real_escape_string($con,$_GET["id"]);
     $rt=mysqli_query($con,"SELECT * FROM blog where id='$togo'");
     $tr = mysqli_fetch_array($rt);
@@ -12,7 +12,7 @@ include "header.php";
 ?>
 
         <!-- Page Banner Start -->
-        <section class="page-banner-area pt-50 pb-35 rel z-1 bgs-cover" style="background-image: url(dashboard/uploads/blog/<?php print $ufile;?>);">
+        <section class="page-banner-area pt-50 pb-35 rel z-1 bgs-cover" style="background-image: url(assets/images/banner/banner.jpg);">
             <div class="container">
                 <div class="banner-inner text-white">
                     <h2 class="page-title mb-10" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50"><?php print $blog_title;?></h2>
@@ -34,6 +34,9 @@ include "header.php";
                 <div class="row">
                     <div class="col-lg-10">
                         <div class="blog-details-content" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="image mt-40 mb-30" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                                <img src="dashboard/uploads/blog/<?php print $ufile;?>" alt="Blog Details"  style="max-width:850px; max-height:470px; object-fit:cover; border-radius:6px;">
+                            </div>
                             <ul class="blog-meta mb-30">
                                 <li><i class="far fa-calendar-alt"></i> <a href="#"><?php print $formatted;?></a></li>
                             </ul>

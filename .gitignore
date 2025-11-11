@@ -2,5 +2,14 @@
 
 # folder
 /assets/
-/dashboard/
+/dashboard/assets/
+/dashboard/cdn.datatables.net/
+/dashboard/cdn.jsdelivr.net/
+/dashboard/cdn.lordicon.com/
+/dashboard/cdnjs.cloudflare.com/
+/dashboard/code.jquery.com/
+/dashboard/front/
+/dashboard/old/
+/dashboard/uploads/
 *.rar
+*.zip

@@ -27,7 +27,7 @@
                                 $formatted = date("d M Y, H:i", strtotime($datetime)); ?>
                         <div class="blog-item style-three" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                             <div class="image">
-                                <img src="assets/images/blog/blog-list1.jpg" alt="Blog List">
+                                <img src="dashboard/uploads/blog/<?php print $row["ufile"];?>" alt="Blog List" style="max-width:350px; max-height:200px; object-fit:cover; border-radius:6px;">
                             </div>
                             <div class="content">
                                 <h5><a href="blogdetail.php?id=<?= $row['id']; ?>"><?= htmlspecialchars($row['blog_title']) ?></a></h5>
