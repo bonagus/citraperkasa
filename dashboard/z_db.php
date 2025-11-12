@@ -9,7 +9,6 @@ if ($con->connect_errno) {
 $url="http://localhost/citraperkasa";
 //$url="http://localhost/citraperkasa";
 
-
 //Set Blog Activation Bonus Here (It must be only Number)
 $blog_bonus ="10";
 //Set Article Activation Bonus Here (It must be only Number)

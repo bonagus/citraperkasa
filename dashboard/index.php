@@ -1,10 +1,8 @@
 <?php
-include"header.php";
-$username=$_SESSION['username'];
+    include"header.php";
+    $username=$_SESSION['username'];
+    include"sidebar.php";
 ?>
-<?php include"sidebar.php";?>
-
-
 
 <!-- ============================================================== -->
 <!-- Start right Content here -->
@@ -26,7 +24,6 @@ $username=$_SESSION['username'];
                                 <li class="breadcrumb-item active">Dashboard</li>
                             </ol>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -55,104 +52,103 @@ $username=$_SESSION['username'];
                         <!--end row-->
 
                         <div class="row h-100">
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar-sm flex-shrink-0">
-                                                        <span class="avatar-title bg-light text-primary rounded-circle fs-3">
-                                                            <i class="mdi mdi-cart-check"></i>
-                                                        </span>
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <?php
-                                                            $result = mysqli_query($con,"SELECT count(*) FROM booking WHERE status='new'");
-                                                            $row = mysqli_fetch_row($result);
-                                                            $numrows = $row[0];
-                                                        ?>
-                                                        <p class="text-uppercase fw-semibold fs-12 text-muted mb-1"> Order Baru</p>
-                                                        <h4 class=" mb-0"><span class="counter-value" data-target="<?php print $numrows; ?>"></span></h4>
-                                                    </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar-sm flex-shrink-0">
+                                                <span class="avatar-title bg-light text-primary rounded-circle fs-3">
+                                                    <i class="mdi mdi-cart-check"></i>
+                                                </span>
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <?php
+                                                    $result = mysqli_query($con,"SELECT count(*) FROM booking WHERE status='new'");
+                                                    $row = mysqli_fetch_row($result);
+                                                    $numrows = $row[0];
+                                                ?>
+                                                <p class="text-uppercase fw-semibold fs-12 text-muted mb-1"> Order Baru</p>
+                                                <h4 class=" mb-0"><span class="counter-value" data-target="<?php print $numrows; ?>"></span></h4>
+                                            </div>
 
-                                                </div>
-                                            </div><!-- end card body -->
-                                        </div><!-- end card -->
-                                    </div><!-- end col -->
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar-sm flex-shrink-0">
-                                                        <span class="avatar-title bg-light text-primary rounded-circle fs-3">
-                                                            <i class="mdi mdi-phone-message-outline"></i>
-                                                        </span>
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <?php
-                                                            $result = mysqli_query($con,"SELECT count(*) FROM booking WHERE status='followup'");
-                                                            $rowx = mysqli_fetch_row($result);
-                                                            $nux = $rowx[0];
-                                                        ?>
-                                                        <p class="text-uppercase fw-semibold fs-12 text-muted mb-1"> Order Belum Selesai</p>
-                                                        <h4 class=" mb-0"><span class="counter-value" data-target="<?php print $nux; ?>"></span></h4>
-                                                    </div>
+                                        </div>
+                                    </div><!-- end card body -->
+                                </div><!-- end card -->
+                            </div><!-- end col -->
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar-sm flex-shrink-0">
+                                                <span class="avatar-title bg-light text-primary rounded-circle fs-3">
+                                                    <i class="mdi mdi-phone-message-outline"></i>
+                                                </span>
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <?php
+                                                    $result = mysqli_query($con,"SELECT count(*) FROM booking WHERE status='followup'");
+                                                    $rowx = mysqli_fetch_row($result);
+                                                    $nux = $rowx[0];
+                                                ?>
+                                                <p class="text-uppercase fw-semibold fs-12 text-muted mb-1"> Order Belum Selesai</p>
+                                                <h4 class=" mb-0"><span class="counter-value" data-target="<?php print $nux; ?>"></span></h4>
+                                            </div>
 
-                                                </div>
-                                            </div><!-- end card body -->
-                                        </div><!-- end card -->
-                                    </div><!-- end col -->
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar-sm flex-shrink-0">
-                                                        <span class="avatar-title bg-light text-primary rounded-circle fs-3">
-                                                            <i class="mdi mdi-checkbox-multiple-marked-circle-outline"></i>
-                                                        </span>
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <?php
-                                                            $result = mysqli_query($con,"SELECT count(*) FROM booking WHERE status='confirmed'");
-                                                            $rod = mysqli_fetch_row($result);
-                                                            $nud = $rod[0];
-                                                        ?>
-                                                        <p class="text-uppercase fw-semibold fs-12 text-muted mb-1"> Total Order</p>
-                                                        <h4 class=" mb-0"><span class="counter-value" data-target="<?php print $nud; ?>"></span></h4>
-                                                    </div>
+                                        </div>
+                                    </div><!-- end card body -->
+                                </div><!-- end card -->
+                            </div><!-- end col -->
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar-sm flex-shrink-0">
+                                                <span class="avatar-title bg-light text-primary rounded-circle fs-3">
+                                                    <i class="mdi mdi-checkbox-multiple-marked-circle-outline"></i>
+                                                </span>
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <?php
+                                                    $result = mysqli_query($con,"SELECT count(*) FROM booking WHERE status='confirmed'");
+                                                    $rod = mysqli_fetch_row($result);
+                                                    $nud = $rod[0];
+                                                ?>
+                                                <p class="text-uppercase fw-semibold fs-12 text-muted mb-1"> Total Order</p>
+                                                <h4 class=" mb-0"><span class="counter-value" data-target="<?php print $nud; ?>"></span></h4>
+                                            </div>
 
-                                                </div>
-                                            </div><!-- end card body -->
-                                        </div><!-- end card -->
-                                    </div><!-- end col -->
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="avatar-sm flex-shrink-0">
-                                                        <span class="avatar-title bg-light text-primary rounded-circle fs-3">
-                                                            <i class="mdi mdi-close-circle-multiple-outline"></i>
-                                                        </span>
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <?php
-                                                            $result = mysqli_query($con,"SELECT count(*) FROM booking WHERE status='cancelled'");
-                                                            $rod = mysqli_fetch_row($result);
-                                                            $nud = $rod[0];
-                                                        ?>
-                                                        <p class="text-uppercase fw-semibold fs-12 text-muted mb-1"> Order Batal</p>
-                                                        <h4 class=" mb-0"><span class="counter-value" data-target="<?php print $nud; ?>"></span></h4>
-                                                    </div>
+                                        </div>
+                                    </div><!-- end card body -->
+                                </div><!-- end card -->
+                            </div><!-- end col -->
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar-sm flex-shrink-0">
+                                                <span class="avatar-title bg-light text-primary rounded-circle fs-3">
+                                                    <i class="mdi mdi-close-circle-multiple-outline"></i>
+                                                </span>
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <?php
+                                                    $result = mysqli_query($con,"SELECT count(*) FROM booking WHERE status='cancelled'");
+                                                    $rod = mysqli_fetch_row($result);
+                                                    $nud = $rod[0];
+                                                ?>
+                                                <p class="text-uppercase fw-semibold fs-12 text-muted mb-1"> Order Batal</p>
+                                                <h4 class=" mb-0"><span class="counter-value" data-target="<?php print $nud; ?>"></span></h4>
+                                            </div>
 
-                                                </div>
-                                            </div><!-- end card body -->
-                                        </div><!-- end card -->
-                                    </div><!-- end col -->
-                                </div>
+                                        </div>
+                                    </div><!-- end card body -->
+                                </div><!-- end card -->
+                            </div><!-- end col -->
+                        </div>
 
                     </div> <!-- end .h-100-->
 
                 </div> <!-- end col -->
-
 
             </div>
 

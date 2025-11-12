@@ -1,75 +1,73 @@
 
 <?php
-include_once("../z_db.php");
+  include_once("../z_db.php");
+  if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
+    $status   = "OK"; //initial status
+    $msg      = "";
+    $username = mysqli_real_escape_string($con, $_POST['username']);  //fetching details through post method
+    $password = mysqli_real_escape_string($con, $_POST['password']);
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
-  $status   = "OK"; //initial status
-  $msg      = "";
-  $username = mysqli_real_escape_string($con, $_POST['username']);  //fetching details through post method
-  $password = mysqli_real_escape_string($con, $_POST['password']);
+    if ($status == "OK") {
 
-  if ($status == "OK") {
-
-    // Retrieve username and password from database according to user's input, preventing sql injection
-    $query = "SELECT * FROM admin WHERE (username = '". mysqli_real_escape_string($con, $_POST['username']) . "') AND (password = '" . mysqli_real_escape_string($con, $_POST['password']) . "')";
+      // Retrieve username and password from database according to user's input, preventing sql injection
+      $query = "SELECT * FROM admin WHERE (username = '". mysqli_real_escape_string($con, $_POST['username']) . "') AND (password = '" . mysqli_real_escape_string($con, $_POST['password']) . "')";
 
 
-    if ($stmt = mysqli_prepare($con, $query)) {
+      if ($stmt = mysqli_prepare($con, $query)) {
 
-      /* execute query */
-      mysqli_stmt_execute($stmt);
+        /* execute query */
+        mysqli_stmt_execute($stmt);
 
-      /* store result */
-      mysqli_stmt_store_result($stmt);
+        /* store result */
+        mysqli_stmt_store_result($stmt);
 
-      $num = mysqli_stmt_num_rows($stmt);
+        $num = mysqli_stmt_num_rows($stmt);
 
-      /* close statement */
-      mysqli_stmt_close($stmt);
+        /* close statement */
+        mysqli_stmt_close($stmt);
 
-      //mysqli_close($con);
-      // Check username and password match
+        //mysqli_close($con);
+        // Check username and password match
 
-      if ($num == 1){
+        if ($num == 1){
 
-        session_start();
-        // Set username session variable
-        $_SESSION['username'] = $username;
+          session_start();
+          // Set username session variable
+          $_SESSION['username'] = $username;
 
-        $username = $_SESSION['username'];
-        print "
-        <script language='javascript'>
-          window.location = 'index.php';
-        </script>";
-      }
+          $username = $_SESSION['username'];
+          print "
+          <script language='javascript'>
+            window.location = 'index.php';
+          </script>";
+        }
 
-      else{
-        $errormsg= "
-        <div class='alert alert-danger alert-dismissible alert-outline fade show'>
-                      Username And/Or Password Does Not Match.
-                          <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                          </div>"; //printing error if found in validation
+        else{
+          $errormsg= "
+          <div class='alert alert-danger alert-dismissible alert-outline fade show'>
+                        Username And/Or Password Does Not Match.
+                            <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                            </div>"; //printing error if found in validation
+        }
       }
     }
-  }
-  else {
+    else {
 
-    $errormsg= "
-    <div class='alert alert-danger alert-dismissible alert-outline fade show'>
-                  ".$msg."
-                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                      </div>"; //printing error if found in validation
+      $errormsg= "
+      <div class='alert alert-danger alert-dismissible alert-outline fade show'>
+                    ".$msg."
+                        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                        </div>"; //printing error if found in validation
+    }
   }
-}
-
 ?>
 
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none">
-<!-- Mirrored from themesbrand.com/velzon/html/default/auth-signin-cover.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 24 Jun 2022 20:40:59 GMT -->
+<!-- Mirrored from themesbrand.com/velzon/html/default/auth-signin-cover.html -->
 <head>
   <meta charset="utf-8" />
-  <title>Sign In | Citra Perkasa</title>
+  <title>Sign In | Citra Perkasa Tour</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Citra Perkasa Admin & Dashboard" name="description" />
   <meta content="Themesbrand" name="author" />
