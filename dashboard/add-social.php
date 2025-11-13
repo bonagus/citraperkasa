@@ -11,10 +11,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Tambah Slider</h4>
+                        <h4 class="mb-sm-0"><a href="javascript:history.go(-1)"><i class="ri-arrow-left-line"></i> Kembali</a></h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Slider</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Sosial Media</a></li>
                                 <li class="breadcrumb-item active">Tambah</li>
                             </ol>
                         </div>
@@ -29,39 +29,37 @@
                     <ul class="nav nav-tabs-custom rounded card-header-tabs border-bottom-0" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-bs-toggle="tab" href="#personalDetails" role="tab" aria-selected="false">
-                                <i class="fas fa-home"></i> Add Slider
+                                <i class="fas fa-home"></i> Tambah Sosial Media
                             </a>
                         </li>
                     </ul>
                 </div>
-
                 <?php
                     $status = "OK"; //initial status
                     $msg="";
                     if(ISSET($_POST['save'])){
-                        $slide_title = mysqli_real_escape_string($con,$_POST['slide_title']);
-                        $slide_text = mysqli_real_escape_string($con,$_POST['slide_text']);
-                        if ( strlen($slide_title) < 5 ){
-                            $msg=$msg."Slider Title Must Be More Than 5 Char Length.<BR>";
+                        $name = mysqli_real_escape_string($con,$_POST['name']);
+                        $fa = mysqli_real_escape_string($con,$_POST['fa']);
+                        $social_link = mysqli_real_escape_string($con,$_POST['social_link']);
+
+                        if ( strlen($name) < 2 ){
+                            $msg=$msg."Social Network Name Must Contain A Char.<BR>";
                             $status= "NOTOK";
                         }
-                        if ( strlen($slide_text) > 250 ){
-                            $msg=$msg."Slider Text description Must Be Less Than 250 Char Length.<BR>";
+                        if ( strlen($fa) < 1 ){
+                            $msg=$msg."Fontawesome Must Be At Least 2 Char Long.<BR>";
                             $status= "NOTOK";
                         }
-                        $uploads_dir = 'uploads/slider';
-                        $tmp_name = $_FILES["ufile"]["tmp_name"];
-                        // basename() may prevent filesystem traversal attacks;
-                        // further validation/sanitation of the filename may be appropriate
-                        $name = basename($_FILES["ufile"]["name"]);
-                        $random_digit=rand(0000,9999);
-                        $new_file_name=$random_digit.$name;
-                        move_uploaded_file($tmp_name, "$uploads_dir/$new_file_name");
+                        if ( strlen($social_link) < 5 ){
+                            $msg=$msg."Social Link Must Be More Than 6 Char Length.<BR>";
+                            $status= "NOTOK";
+                        }
 
                         if($status=="OK"){
-                            $qb=mysqli_query($con,"INSERT INTO slider (slide_title, slide_text,ufile) VALUES ('$slide_title', '$slide_text', '$new_file_name')");
+                            $qb=mysqli_query($con,"INSERT INTO social (name, fa, social_link) VALUES ('$name', '$fa', '$social_link')");
                             if($qb){
-                                $errormsg= "<div class='alert alert-success alert-dismissible alert-outline fade show'>Slider has been added successfully.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>"; //printing error if found in validation
+                                $errormsg= "<div class='alert alert-success alert-dismissible alert-outline fade show'>Social Link has been added successfully.<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>"; //printing error if found in validation
+
                             }
                         }
                         elseif ($status!=="OK") {
@@ -79,35 +77,36 @@
                             <?php
                                 if($_SERVER['REQUEST_METHOD'] == 'POST')
                                 {
-                                print $errormsg;
+                                    print $errormsg;
                                 }
                             ?>
                             <form action="" method="post" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label for="firstnameInput" class="form-label"> Slider Title</label>
-                                            <input type="text" class="form-control" id="firstnameInput" name="slide_title" placeholder="Enter Destination Title">
+                                            <label for="firstnameInput" class="form-label"> Social Network</label>
+                                            <input type="text" class="form-control" id="firstnameInput" name="name" placeholder="Enter Name Of Social Network">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label for="firstnameInput" class="form-label"> Slider Text</label>
-                                            <input type="text" class="form-control" id="firstnameInput" name="slide_text" placeholder="Enter Destination Title">
+                                            <label for="firstnameInput" class="form-label">Social Fontawesome Code</label>
+                                            <input type="text" class="form-control" id="firstnameInput" name="fa" placeholder="fa-envelop-o">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label for="firstnameInput" class="form-label">Photo</label>
-                                            <input type="file" class="form-control" id="firstnameInput" name="ufile" >
+                                            <label for="firstnameInput" class="form-label"> Social Link</label>
+                                            <input type="text" class="form-control" id="firstnameInput" name="social_link" placeholder="https://facebook.com/hillsoftsnetwork/">
                                         </div>
                                     </div>
+
                                     <!--end col-->
                                     <div class="col-lg-12">
                                         <div class="hstack gap-2 justify-content-end">
-                                            <button type="submit" name="save" class="btn btn-primary">Upload Slider</button>
+                                            <button type="submit" name="save" class="btn btn-primary">Add Social</button>
 
                                         </div>
                                     </div>
@@ -117,9 +116,14 @@
                             </form>
                         </div>
                         <!--end tab-pane-->
+
+                        <!--end tab-pane-->
+
+                        <!--end tab-pane-->
                     </div>
                 </div>
             </div>
+
 
         </div>
         <!-- container-fluid -->

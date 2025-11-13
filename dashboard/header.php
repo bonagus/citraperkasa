@@ -14,6 +14,18 @@
     else {
         print "<script language='javascript'>window.location = 'login.php';</script>";
     }
+    // Ambil favicon dari tabel logo (kolom logo_b)
+    $qfav = mysqli_query($con, "SELECT xfile FROM logo LIMIT 1");
+    $rfav = mysqli_fetch_assoc($qfav);
+    $favicon = '';
+
+    if ($rfav && !empty($rfav['xfile'])) {
+        // Lokasi penyimpanan favicon, misalnya di folder uploads/logo/
+        $favicon = 'uploads/logo/' . $rfav['xfile'];
+    } else {
+        // fallback favicon default
+        $favicon = 'assets/images/favicon.ico';
+    }
 ?>
 
 <!doctype html>
@@ -26,7 +38,7 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="<?= $favicon ?>">
     <!-- jsvectormap css -->
     <link href="assets/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
     <!--Swiper slider css-->
@@ -52,7 +64,7 @@
                     <div class="d-flex">
                         <!-- LOGO -->
                         <div class="navbar-brand-box horizontal-logo">
-                            <a href="index.html" class="logo logo-dark">
+                            <a href="dashboard" class="logo logo-dark">
                                 <span class="logo-sm">
                                     <img src="assets/images/logo-sm.png" alt="" height="22">
                                 </span>
@@ -61,7 +73,7 @@
                                 </span>
                             </a>
 
-                            <a href="index.html" class="logo logo-light">
+                            <a href="dashboard" class="logo logo-light">
                                 <span class="logo-sm">
                                     <img src="assets/images/logo-sm.png" alt="" height="22">
                                 </span>

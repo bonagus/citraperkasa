@@ -6,17 +6,15 @@
 <!-- ============================================================== -->
 <div class="main-content">
     <div class="page-content">
-        <div class="container-fluid">
-
+       <div class="container-fluid">
             <!-- start page title -->
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Slider</h4>
-
+                        <h4 class="mb-sm-0">Social Media</h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Slider</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Sosial Media</a></li>
                                 <li class="breadcrumb-item active">Data</li>
                             </ol>
                         </div>
@@ -36,27 +34,26 @@
                             <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
                                 <thead>
                                     <tr>
-                                    <th data-ordering="false">Image</th>
-                                        <th data-ordering="false">Slider Title</th>
+                                        <th data-ordering="false">Sosial Media</th>
+                                        <th data-ordering="false">Link</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $q="SELECT * FROM  slider ORDER BY id ASC";
+                                        $q="SELECT * FROM  social ORDER BY id DESC";
                                         $r123 = mysqli_query($con,$q);
                                         while($ro = mysqli_fetch_array($r123))
                                         {
                                             $id="$ro[id]";
-                                            $slide_title="$ro[slide_title]";
-                                            $ufile="$ro[ufile]";
-
+                                            $name="$ro[name]";
+                                            $social_link="$ro[social_link]";
                                             print "<tr>
                                                 <td>
-                                                    <img src='uploads/slider/$ufile' alt='img' style='max-width:150px; max-height:150px; object-fit:cover;'>
+                                                    $name
                                                 </td>
                                                 <td>
-                                                    $slide_title
+                                                    <a href='$social_link'>$social_link</a>
                                                 </td>
                                                 <td>
                                                     <div class='dropdown d-inline-block'>
@@ -64,10 +61,8 @@
                                                             <i class='ri-more-fill align-middle'></i>
                                                         </button>
                                                         <ul class='dropdown-menu dropdown-menu-end'>
-
                                                             <li>
-                                                                <a href='editslide.php?id=$id' class='dropdown-item remove-item-btn'>
-                                                                    <i class='ri-pencil-fill align-bottom me-2 text-muted'></i> Edit
+                                                                <a href='deletesocial.php?id=$id' onclick=\"return confirm('Yakin ingin menghapus data ini?');\" class='dropdown-item text-danger'><i class='ri-delete-bin-fill me-2'></i> Delete
                                                                 </a>
                                                             </li>
                                                         </ul>
@@ -83,10 +78,8 @@
                     </div>
                 </div><!--end col-->
             </div><!--end row-->
-
         </div>
         <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
-
 <?php include"footer.php";?>

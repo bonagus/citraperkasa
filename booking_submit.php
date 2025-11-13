@@ -125,7 +125,7 @@ if (!$stmt->execute()) {
 
 // ---------- Redirect ke WhatsApp ----------
 $destination = getTitle($con, 'destination', $destination_id, 'dest_title');
-$waAdmin = '6285747138766'; // ubah ke nomor kamu
+// $waAdmin = '6285747138766'; // ubah ke nomor kamu
 
 $msg = "Halo, saya ingin melakukan pemesanan wisata:\n"
      . "Kode Booking: $booking_code\n"
@@ -141,7 +141,7 @@ $msg = "Halo, saya ingin melakukan pemesanan wisata:\n"
      . "Catatan: $note\n"
      . "Estimasi Harga: Rp " . number_format($total, 0, ',', '.');
 
-$waUrl = "https://wa.me/$waAdmin?text=" . urlencode($msg);
+$waUrl = "https://wa.me/$waNumberClean?text=" . urlencode($msg);
 header("Location: $waUrl");
 exit;
 ?>

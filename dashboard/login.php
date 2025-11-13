@@ -60,6 +60,18 @@
                         </div>"; //printing error if found in validation
     }
   }
+    // Ambil favicon dari tabel logo (kolom logo_b)
+    $qfav = mysqli_query($con, "SELECT xfile FROM logo LIMIT 1");
+    $rfav = mysqli_fetch_assoc($qfav);
+    $favicon = '';
+
+    if ($rfav && !empty($rfav['xfile'])) {
+        // Lokasi penyimpanan favicon, misalnya di folder uploads/logo/
+        $favicon = 'uploads/logo/' . $rfav['xfile'];
+    } else {
+        // fallback favicon default
+        $favicon = 'assets/images/favicon.ico';
+    }
 ?>
 
 <!doctype html>
@@ -72,7 +84,7 @@
   <meta content="Citra Perkasa Admin & Dashboard" name="description" />
   <meta content="Themesbrand" name="author" />
   <!-- App favicon -->
-  <link rel="shortcut icon" href="assets/images/favicon.ico">
+  <link rel="shortcut icon" href="<?= $favicon ?>">
   <!-- Layout config Js -->
   <script src="assets/js/layout.js"></script>
   <!-- Bootstrap Css -->

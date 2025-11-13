@@ -19,6 +19,18 @@
     $why_text="$rs[why_text]";
     $about_title="$rs[about_title]";
     $about_text="$rs[about_text]";
+    // Ambil favicon dari tabel logo (kolom logo_b)
+    $qfav = mysqli_query($con, "SELECT xfile FROM logo LIMIT 1");
+    $rfav = mysqli_fetch_assoc($qfav);
+    $favicon = '';
+
+    if ($rfav && !empty($rfav['xfile'])) {
+        // Lokasi penyimpanan favicon, misalnya di folder uploads/logo/
+        $favicon = 'dashboard/uploads/logo/' . $rfav['xfile'];
+    } else {
+        // fallback favicon default
+        $favicon = 'assets/images/logos/favicon.png';
+    }
 ?>
 
 
@@ -53,7 +65,7 @@
     <title>Citra Perkasa Tour - <?php print $site_title ?></title>
 
     <!-- Favicon Icon -->
-    <link rel="shortcut icon" href="assets/images/logos/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= $favicon ?>" type="image/x-icon">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
@@ -93,11 +105,33 @@
                         $rt=mysqli_query($con,"SELECT ufile FROM logo where id=1");
                         $tr = mysqli_fetch_array($rt);
                         $ufile = "$tr[ufile]";
+                        function getHeaderImage($con, $pageTitle) {
+                            $pageTitle = mysqli_real_escape_string($con, $pageTitle);
+                            $q = mysqli_query($con, "SELECT ufile FROM slider WHERE slide_title = '$pageTitle' LIMIT 1");
+                            $r = mysqli_fetch_assoc($q);
+                            if ($r && file_exists("dashboard/uploads/slider/" . $r['ufile'])) {
+                                return "dashboard/uploads/slider/" . $r['ufile'];
+                            } else {
+                                // fallback image kalau tidak ditemukan
+                                return "assets/images/banner/banner.jpg";
+                            }
+                        }
+
+                        // Ambil nomor dari tabel sitecontact
+                        $qwa = mysqli_query($con, "SELECT phone1 FROM sitecontact LIMIT 1");
+                        $rwa = mysqli_fetch_assoc($qwa);
+                        $waNumber = $rwa ? $rwa['phone1'] : '+62 857 4713 8766';
+
+                        // Ubah format agar sesuai API WA (contoh: +62 857 4713 8766 -> 6285747138766)
+                        $waNumberClean = preg_replace('/[^0-9]/', '', $waNumber);
+                        if (substr($waNumberClean, 0, 1) === '0') {
+                            $waNumberClean = '62' . substr($waNumberClean, 1);
+                        }
                     ?>
 
                     <div class="header-inner rel d-flex align-items-center">
                         <div class="logo-outer">
-                            <div class="logo"><a href="index.html"><img src="dashboard/uploads/logo/<?php print $ufile?>" alt="Logo" title="Logo"></a></div>
+                            <div class="logo"><a href="home"><img src="dashboard/uploads/logo/<?php print $ufile?>" alt="Logo" title="Logo"></a></div>
                         </div>
 
                         <div class="nav-outer mx-lg-auto ps-xxl-5 clearfix">
@@ -105,7 +139,7 @@
                             <nav class="main-menu navbar-expand-lg">
                                 <div class="navbar-header">
                                    <div class="mobile-logo">
-                                       <a href="index.html">
+                                       <a href="home">
                                             <img src="dashboard/uploads/logo/<?php print $ufile?>" alt="Logo" title="Logo">
                                        </a>
                                    </div>

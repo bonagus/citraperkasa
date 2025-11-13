@@ -21,6 +21,9 @@ RewriteRule    ^location/?$    location.php    [NC,L]
 RewriteRule    ^createfacility/?$    add-facility.php    [NC,L]
 RewriteRule    ^facility/?$    facility.php    [NC,L]
 
+RewriteRule    ^creategallery/?$    add-gallery.php    [NC,L]
+RewriteRule    ^gallery/?$    gallery.php    [NC,L]
+
 RewriteRule    ^createservice/?$    add-service.php    [NC,L]
 RewriteRule    ^createsocial/?$    add-social.php    [NC,L]
 RewriteRule    ^addwhy/?$    add-why.php    [NC,L]
